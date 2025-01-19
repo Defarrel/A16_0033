@@ -1,6 +1,5 @@
 package com.example.gloycash.model
 
-import kotlinx.coroutines.flow.Flow
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
