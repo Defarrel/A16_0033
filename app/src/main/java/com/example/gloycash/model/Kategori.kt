@@ -5,7 +5,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Kategori(
     @SerialName("id_kategori")
-    val id: Int,
+    val id: Int = 0,
     @SerialName("nama_kategori")
     val namaKategori: String
 )

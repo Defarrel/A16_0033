@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Aset(
     @SerialName("id_aset")
-    val id: Int,
+    val id: Int = 0,
     @SerialName("nama_aset")
     val namaAset: String
 )

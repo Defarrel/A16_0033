@@ -6,7 +6,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class Pendapatan(
     @SerialName("id_pendapatan")
-    val id: Int,
+    val id: Int = 0,
     @SerialName("id_aset")
     val idAset: Int,
     @SerialName("id_kategori")
