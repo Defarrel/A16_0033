@@ -30,13 +30,12 @@ interface AppContainer {
 }
 
 class KeuanganKontainer : AppContainer {
-    private val baseUrl = "http://10.0.2.2:3000/keuangan"
+    private val baseUrl = "http://10.0.2.2:3000/"
     private val json = Json { ignoreUnknownKeys = true }
     private val retrofit: Retrofit = Retrofit.Builder()
         .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
         .baseUrl(baseUrl).build()
 
-    // Service instances
     private val keuanganService: KeuanganService by lazy {
         retrofit.create(KeuanganService::class.java)
     }
@@ -53,7 +52,7 @@ class KeuanganKontainer : AppContainer {
         retrofit.create(PengeluaranService::class.java)
     }
 
-    // Repository instances
+
     override val keuanganRepository: KeuanganRepository by lazy {
         NetworkKeuanganRepository(keuanganService)
     }
