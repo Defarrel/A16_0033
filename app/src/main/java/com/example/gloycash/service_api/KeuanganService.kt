@@ -6,12 +6,12 @@ import com.example.gloycash.model.TotalPengeluaranResponse
 import retrofit2.http.GET
 
 interface KeuanganService {
-    @GET("/saldo")
+    @GET("keuangan/saldo")
     suspend fun getSaldo(): SaldoResponse
 
-    @GET("/total-pendapatan")
+    @GET("keuangan/total-pendapatan")
     suspend fun getTotalPendapatan(): TotalPendapatanResponse
 
-    @GET("/total-pengeluaran")
+    @GET("keuangan/total-pengeluaran")
     suspend fun getTotalPengeluaran(): TotalPengeluaranResponse
 }

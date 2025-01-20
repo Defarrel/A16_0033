@@ -20,10 +20,10 @@ interface KategoriService {
         "Accept: application/json",
         "Content-Type: application/json"
     )
-    @POST("store")
+    @POST("kategori/store")
     suspend fun insertKategori(@Body kategori: Kategori)
 
-    @GET(".")
+    @GET("kategori")
     suspend fun getKategori(): AllKategoriResponse
 
     @GET("{id}")

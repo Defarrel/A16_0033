@@ -23,7 +23,7 @@ interface PengeluaranService {
     @POST("store")
     suspend fun insertPengeluaran(@Body pengeluaran: Pengeluaran)
 
-    @GET(".")
+    @GET("pendapatan/pengeluaran")
     suspend fun getPengeluaran(): AllPengeluaranResponse
 
     @GET("{id}")

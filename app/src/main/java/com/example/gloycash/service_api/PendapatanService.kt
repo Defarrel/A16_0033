@@ -20,10 +20,10 @@ interface PendapatanService {
         "Accept: application/json",
         "Content-Type: application/json"
     )
-    @POST("store")
+    @POST("pendapatan/store")
     suspend fun insertPendapatan(@Body pendapatan: Pendapatan)
 
-    @GET(".")
+    @GET("pendapatan")
     suspend fun getPendapatan(): AllPendapatanResponse
 
     @GET("{id}")

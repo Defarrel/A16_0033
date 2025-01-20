@@ -17,10 +17,10 @@ interface AsetService {
         "Accept: application/json",
         "Content-Type: application/json"
     )
-    @POST("store")
+    @POST("aset/store")
     suspend fun insertAset(@Body aset: Aset)
 
-    @GET(".")
+    @GET("aset")
     suspend fun getAset(): AllAsetResponse
 
     @GET("{id}")
