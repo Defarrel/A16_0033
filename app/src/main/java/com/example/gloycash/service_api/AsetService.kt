@@ -23,12 +23,12 @@ interface AsetService {
     @GET("aset")
     suspend fun getAset(): AllAsetResponse
 
-    @GET("{id}")
+    @GET("aset/{id}")
     suspend fun getAsetById(@Path("id") id: Int): AsetDetailResponse
 
-    @PUT("{id}")
+    @PUT("aset/{id}")
     suspend fun updateAset(@Path("id") id: Int, @Body aset: Aset)
 
-    @DELETE("{id}")
+    @DELETE("aset/{id}")
     suspend fun deleteAset(@Path("id") id: Int): Response<Void>
 }
