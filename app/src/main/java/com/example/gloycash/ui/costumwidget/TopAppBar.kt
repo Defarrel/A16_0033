@@ -45,7 +45,6 @@ fun TopAppBar(
     pengeluaran: String,
     modifier: Modifier = Modifier,
     saldoColor: Color,
-    onRefresh: () -> Unit
 ) {
     Column(
         modifier = Modifier
