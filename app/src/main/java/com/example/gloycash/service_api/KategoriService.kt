@@ -26,12 +26,12 @@ interface KategoriService {
     @GET("kategori")
     suspend fun getKategori(): AllKategoriResponse
 
-    @GET("{id}")
+    @GET("kategori/{id}")
     suspend fun getKategoriById(@Path("id") id: Int): KategoriDetailResponse
 
-    @PUT("{id}")
+    @PUT("kategori/{id}")
     suspend fun updateKategori(@Path("id") id: Int, @Body kategori: Kategori)
 
-    @DELETE("{id}")
+    @DELETE("kategori/{id}")
     suspend fun deleteKategori(@Path("id") id: Int): Response<Void>
 }
