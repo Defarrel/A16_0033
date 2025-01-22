@@ -5,10 +5,6 @@ data class SaldoResponse(
     val saldo: Float,
     val statusText: String
 )
-data class TotalPendapatanResponse(
-    val status: Boolean,
-    val totalPendapatan: Float
-)
 data class TotalPengeluaranResponse(
     val status: Boolean,
     val totalPengeluaran: Float
