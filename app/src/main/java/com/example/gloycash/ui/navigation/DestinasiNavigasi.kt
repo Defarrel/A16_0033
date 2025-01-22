@@ -36,6 +36,31 @@ object DestinasiUpdatePendapatan : DestinasiNavigasi {
     val routeWithArg = "$route/{$ID}"
 }
 
+// Pengeluaran
+object DestinasiHomePengeluaran : DestinasiNavigasi {
+    override val route = "home_pengeluaran"
+    override val titleRes = "Home_Pengeluaran"
+}
+
+object DestinasiInsertPengeluaran : DestinasiNavigasi {
+    override val route = "insert_pengeluaran"
+    override val titleRes = "Insert Pengeluaran"
+}
+
+object DestinasiDetailPengeluaran: DestinasiNavigasi {
+    override val route = "detail_pengeluaran"
+    const val ID = "id"
+    override val titleRes = "Detail Pengeluaran"
+    val routeWithArg = "$route/{$ID}"
+}
+
+object DestinasiUpdatePengeluaran : DestinasiNavigasi {
+    override val route = "update_pengeluaran"
+    const val ID = "id"
+    override val titleRes = "Edit Pengeluaran"
+    val routeWithArg = "$route/{$ID}"
+}
+
 //Aset
 object DestinasiHomeAset : DestinasiNavigasi {
     override val route = "home_aset"

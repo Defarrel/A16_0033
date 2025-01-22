@@ -1,4 +1,4 @@
-import android.util.Log
+
 import com.example.gloycash.model.AllAsetResponse
 import com.example.gloycash.model.AllKategoriResponse
 import com.example.gloycash.model.Pendapatan
@@ -11,6 +11,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.gloycash.ui.viewmodel.pengeluaran.FormErrorStatePengeluaran
 import kotlinx.coroutines.launch
 
 class PendapatanInsertViewModel(
@@ -73,8 +74,6 @@ class PendapatanInsertViewModel(
                     uiState = uiState.copy(
                         snackBarMessage = "Data gagal disimpan"
                     )
-                    // Log or print the exception to get more information about the error
-                    Log.e("PendapatanInsertViewModel", "Error saving data", e)
                 }
             }
         } else {
