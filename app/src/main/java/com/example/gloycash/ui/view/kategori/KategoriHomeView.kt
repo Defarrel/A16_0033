@@ -70,6 +70,8 @@ fun KategoriHomeView(
                 pendapatan = "",
                 pengeluaran = "",
                 saldoColor = MaterialTheme.colorScheme.primary,
+                showRefreshButton = true,
+                onRefresh = viewModel::getKategori,
             )
         },
         bottomBar = {

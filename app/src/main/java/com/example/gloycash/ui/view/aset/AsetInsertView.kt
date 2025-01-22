@@ -75,6 +75,8 @@ fun AsetInsertView(
                 pendapatan = "",
                 pengeluaran = "",
                 saldoColor = MaterialTheme.colorScheme.primary,
+                showRefreshButton = false,
+                onRefresh = {},
             )
         },
         bottomBar = {

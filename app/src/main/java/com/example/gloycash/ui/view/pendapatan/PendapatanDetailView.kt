@@ -74,7 +74,9 @@ fun PendapatanDetailView(
                 saldo = "",
                 pendapatan = "",
                 pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary
+                saldoColor = MaterialTheme.colorScheme.primary,
+                showRefreshButton = false,
+                onRefresh = {},
             )
         },
         bottomBar = {

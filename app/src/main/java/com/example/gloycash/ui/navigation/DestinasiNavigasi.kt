@@ -17,6 +17,25 @@ object DestinasiHomePendapatan : DestinasiNavigasi {
     override val titleRes = "Home_Pendapatan"
 }
 
+object DestinasiInsertPendapatan : DestinasiNavigasi {
+    override val route = "insert_pendapatan"
+    override val titleRes = "Insert Pendapatan"
+}
+
+object DestinasiDetailPendapatan: DestinasiNavigasi {
+    override val route = "detail_pendapatan"
+    const val ID = "id"
+    override val titleRes = "Detail Pendapatan"
+    val routeWithArg = "$route/{$ID}"
+}
+
+object DestinasiUpdatePendapatan : DestinasiNavigasi {
+    override val route = "update_pendapatan"
+    const val ID = "id"
+    override val titleRes = "Edit Pendapatan"
+    val routeWithArg = "$route/{$ID}"
+}
+
 //Aset
 object DestinasiHomeAset : DestinasiNavigasi {
     override val route = "home_aset"

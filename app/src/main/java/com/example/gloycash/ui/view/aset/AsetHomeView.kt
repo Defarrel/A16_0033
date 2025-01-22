@@ -82,6 +82,8 @@ fun AsetHomeView(
                 pendapatan = "",
                 pengeluaran = "",
                 saldoColor = MaterialTheme.colorScheme.primary,
+                showRefreshButton = true,
+                onRefresh = viewModel::getAset,
             )
         },
         bottomBar = {

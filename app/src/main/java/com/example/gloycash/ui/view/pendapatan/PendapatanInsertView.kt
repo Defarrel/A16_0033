@@ -60,6 +60,8 @@ fun PendapatanInsertView(
                 pendapatan = "",
                 pengeluaran = "",
                 saldoColor = MaterialTheme.colorScheme.primary,
+                showRefreshButton = false,
+                onRefresh = {},
             )
         },
         bottomBar = {

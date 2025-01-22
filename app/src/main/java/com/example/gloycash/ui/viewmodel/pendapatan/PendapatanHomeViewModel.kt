@@ -21,16 +21,14 @@ class PendapatanHomeViewModel(private val pendapatanRepository: PendapatanReposi
     var uiState: PendapatanUiState by mutableStateOf(PendapatanUiState.Loading)
         private set
 
-    // Variable to store the total pendapatan
     var totalPendapatan: Float by mutableStateOf(0f)
         private set
 
     init {
-        getPendapatan() // Get the list of pendapatan
-        getTotalPendapatan() // Calculate the total pendapatan right away
+        getPendapatan()
+        getTotalPendapatan()
     }
 
-    // Fetch the pendapatan and update the UI state
     fun getPendapatan() {
         viewModelScope.launch {
             uiState = PendapatanUiState.Loading
@@ -45,20 +43,16 @@ class PendapatanHomeViewModel(private val pendapatanRepository: PendapatanReposi
         }
     }
 
-    // Calculate and update the total pendapatan
     fun getTotalPendapatan() {
         viewModelScope.launch {
             try {
                 val response = pendapatanRepository.getPendapatan()
-                // Manually sum the 'total' values by iterating
                 totalPendapatan = response.data.fold(0f) { acc, pendapatan ->
                     acc + pendapatan.total.toFloat()
                 }
             } catch (e: IOException) {
-                // Handle any exceptions related to the network or data fetch
                 totalPendapatan = 0f
             } catch (e: HttpException) {
-                // Handle any HTTP exceptions
                 totalPendapatan = 0f
             }
         }

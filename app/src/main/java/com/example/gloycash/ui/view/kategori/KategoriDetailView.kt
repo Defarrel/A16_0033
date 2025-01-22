@@ -78,6 +78,8 @@ fun KategoriDetailView(
                 pendapatan = "",
                 pengeluaran = "",
                 saldoColor = MaterialTheme.colorScheme.primary,
+                showRefreshButton = false,
+                onRefresh = {},
             )
         },
         bottomBar = {

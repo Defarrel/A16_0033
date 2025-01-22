@@ -45,6 +45,8 @@ fun TopAppBar(
     pengeluaran: String,
     modifier: Modifier = Modifier,
     saldoColor: Color,
+    onRefresh: () -> Unit,
+    showRefreshButton: Boolean = true
 ) {
     Column(
         modifier = Modifier
@@ -55,114 +57,133 @@ fun TopAppBar(
             color = colorResource(id = R.color.warna1),
             shadowElevation = 4.dp,
         ) {
-            Row(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(vertical = 8.dp, horizontal = 16.dp),
-                verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.SpaceBetween
-            ) {
-                Column {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically
-                    ) {
-                        if (showBackButton) {
-                            IconButton(onClick = onBack) {
-                                Icon(
-                                    imageVector = Icons.Default.ArrowBack,
-                                    contentDescription = "Back",
-                                    tint = colorResource(id = R.color.white)
-                                )
-                            }
-                        }
-
-                        if (showProfile) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp)
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.me),
-                                    contentDescription = null,
-                                    modifier = Modifier
-                                        .size(40.dp)
-                                        .clip(shape = CircleShape)
-                                )
-                                Column {
-                                    Text(
-                                        text = "Welcome",
-                                        fontSize = 13.sp,
-                                        color = colorResource(id = R.color.white)
-                                    )
-                                    Text(
-                                        text = "Defarrel Danendra Praja",
-                                        fontSize = 15.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = colorResource(id = R.color.white)
+            Column {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(vertical = 8.dp, horizontal = 16.dp),
+                    verticalAlignment = Alignment.CenterVertically,
+                    horizontalArrangement = Arrangement.SpaceBetween
+                ) {
+                    Column {
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically
+                        ) {
+                            if (showBackButton) {
+                                IconButton(onClick = onBack) {
+                                    Icon(
+                                        imageVector = Icons.Default.ArrowBack,
+                                        contentDescription = "Back",
+                                        tint = colorResource(id = R.color.white)
                                     )
                                 }
                             }
+
+                            if (showProfile) {
+                                Row(
+                                    verticalAlignment = Alignment.CenterVertically,
+                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
+                                ) {
+                                    Image(
+                                        painter = painterResource(id = R.drawable.me),
+                                        contentDescription = null,
+                                        modifier = Modifier
+                                            .size(40.dp)
+                                            .clip(shape = CircleShape)
+                                    )
+                                    Column {
+                                        Text(
+                                            text = "Welcome",
+                                            fontSize = 13.sp,
+                                            color = colorResource(id = R.color.white)
+                                        )
+                                        Text(
+                                            text = "Defarrel Danendra Praja",
+                                            fontSize = 15.sp,
+                                            fontWeight = FontWeight.Bold,
+                                            color = colorResource(id = R.color.white)
+                                        )
+                                    }
+                                }
+                            }
+                        }
+
+                        if (showPageTitle) {
+                            Text(
+                                text = Judul,
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.white),
+                                modifier = Modifier.padding(top = 8.dp)
+                            )
                         }
                     }
 
-                    if (showPageTitle) {
-                        Text(
-                            text = Judul,
-                            fontSize = 25.sp,
-                            fontWeight = FontWeight.Bold,
-                            color = colorResource(id = R.color.white),
-                            modifier = Modifier.padding(top = 8.dp)
-                        )
+                    Image(
+                        painter = painterResource(id = R.drawable.gloycash),
+                        contentDescription = "Logo",
+                        modifier = Modifier.size(100.dp)
+                    )
+                }
+
+                if (showRefreshButton) {
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth(),
+                        horizontalArrangement = Arrangement.End
+                    ) {
+                        IconButton(onClick = onRefresh) {
+                            Icon(
+                                imageVector = Icons.Filled.Refresh,
+                                contentDescription = "Refresh",
+                                tint = colorResource(id = R.color.white)
+                            )
+                        }
                     }
                 }
 
-                Image(
-                    painter = painterResource(id = R.drawable.gloycash),
-                    contentDescription = "Logo",
-                    modifier = Modifier.size(100.dp)
-                )
-            }
-
-
-            if (showSaldo) {
-                Column(
-                    modifier = Modifier
-                        .padding(top = 8.dp),
-                    horizontalAlignment = Alignment.CenterHorizontally
-                ) {
-                    Text(
-                        text = "Uang Anda Sekarang",
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = colorResource(id = R.color.white)
-                    )
-                    Spacer(modifier = Modifier.height(4.dp))
-                    Text(
-                        text = "Rp. $saldo",
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Medium,
-                        color = colorResource(id = R.color.white)
-                    )
-                    Row(
-                        modifier = Modifier.padding(top = 4.dp)
+                if (showSaldo) {
+                    Column(
+                        modifier = Modifier
+                            .padding(top = 8.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally
                     ) {
                         Text(
-                            text = "Pendapatan: Rp. $pendapatan",
-                            fontSize = 14.sp,
+                            text = "Uang Anda Sekarang",
+                            fontSize = 20.sp,
+                            fontWeight = FontWeight.Bold,
                             color = colorResource(id = R.color.white)
                         )
-                        Spacer(modifier = Modifier.width(16.dp))
+                        Spacer(modifier = Modifier.height(4.dp))
                         Text(
-                            text = "Pengeluaran: Rp. $pengeluaran",
-                            fontSize = 14.sp,
+                            text = "Rp. $saldo",
+                            fontSize = 16.sp,
+                            fontWeight = FontWeight.Medium,
                             color = colorResource(id = R.color.white)
                         )
+                        Row(
+                            modifier = Modifier.padding(top = 4.dp)
+                        ) {
+                            Text(
+                                text = "Pendapatan: Rp. $pendapatan",
+                                fontSize = 14.sp,
+                                color = colorResource(id = R.color.white)
+                            )
+                            Spacer(modifier = Modifier.width(16.dp))
+                            Text(
+                                text = "Pengeluaran: Rp. $pengeluaran",
+                                fontSize = 14.sp,
+                                color = colorResource(id = R.color.white)
+                            )
+                        }
                     }
                 }
             }
         }
     }
 }
+
+
 
 
 

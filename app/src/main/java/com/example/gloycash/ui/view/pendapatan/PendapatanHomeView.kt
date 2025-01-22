@@ -38,7 +38,6 @@ fun PendapatanHomeView(
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
 
-    // Access the total pendapatan
     val totalPendapatan = viewModel.totalPendapatan
 
     Scaffold(
@@ -52,9 +51,10 @@ fun PendapatanHomeView(
                 showPageTitle = true,
                 Judul = "Total Pendapatan: Rp ${totalPendapatan}",
                 saldo = "",
-                pendapatan = "", // Show the total pendapatan in TopAppBar
+                pendapatan = "",
                 pengeluaran = "",
                 saldoColor = MaterialTheme.colorScheme.primary,
+                onRefresh = viewModel::getPendapatan
             )
         },
         bottomBar = {
