@@ -39,9 +39,6 @@ fun PendapatanUpdateView(
                 showPageTitle = true,
                 Judul = "Update Pendapatan",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 showRefreshButton = false,
                 onRefresh = {},
             )

@@ -81,9 +81,6 @@ fun AsetDetailView(
                 showPageTitle = true,
                 Judul = "Detail Aset",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 showRefreshButton = false,
                 onRefresh = {},
             )

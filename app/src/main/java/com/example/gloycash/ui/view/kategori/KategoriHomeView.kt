@@ -67,9 +67,6 @@ fun KategoriHomeView(
                 showPageTitle = true,
                 Judul = "Kategori Anda Saat Ini",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 showRefreshButton = true,
                 onRefresh = viewModel::getKategori,
             )

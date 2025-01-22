@@ -73,9 +73,6 @@ fun PengeluaranDetailView(
                 showPageTitle = true,
                 Judul = "Detail Pengeluaran",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 showRefreshButton = false,
                 onRefresh = {},
             )

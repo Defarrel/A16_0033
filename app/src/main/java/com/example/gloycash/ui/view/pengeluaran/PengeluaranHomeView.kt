@@ -51,9 +51,6 @@ fun PengeluaranHomeView(
                 showPageTitle = true,
                 Judul = "Total Pengeluaran: Rp ${totalPengeluaran}",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 onRefresh = viewModel::getPengeluaran
             )
         },

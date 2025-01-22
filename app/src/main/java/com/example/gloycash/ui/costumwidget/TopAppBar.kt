@@ -41,10 +41,7 @@ fun TopAppBar(
     showPageTitle: Boolean = true,
     Judul: String,
     saldo: String,
-    pendapatan: String,
-    pengeluaran: String,
     modifier: Modifier = Modifier,
-    saldoColor: Color,
     onRefresh: () -> Unit,
     showRefreshButton: Boolean = true
 ) {
@@ -161,21 +158,6 @@ fun TopAppBar(
                             fontWeight = FontWeight.Medium,
                             color = colorResource(id = R.color.white)
                         )
-                        Row(
-                            modifier = Modifier.padding(top = 4.dp)
-                        ) {
-                            Text(
-                                text = "Pendapatan: Rp. $pendapatan",
-                                fontSize = 14.sp,
-                                color = colorResource(id = R.color.white)
-                            )
-                            Spacer(modifier = Modifier.width(16.dp))
-                            Text(
-                                text = "Pengeluaran: Rp. $pengeluaran",
-                                fontSize = 14.sp,
-                                color = colorResource(id = R.color.white)
-                            )
-                        }
                     }
                 }
             }

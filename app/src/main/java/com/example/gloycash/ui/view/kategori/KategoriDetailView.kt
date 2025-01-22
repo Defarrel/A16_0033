@@ -75,9 +75,6 @@ fun KategoriDetailView(
                 showPageTitle = true,
                 Judul = "Detail Kategori",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 showRefreshButton = false,
                 onRefresh = {},
             )

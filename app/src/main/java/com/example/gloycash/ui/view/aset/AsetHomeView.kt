@@ -79,9 +79,6 @@ fun AsetHomeView(
                 showPageTitle = true,
                 Judul = "Aset Anda Saat Ini",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 showRefreshButton = true,
                 onRefresh = viewModel::getAset,
             )

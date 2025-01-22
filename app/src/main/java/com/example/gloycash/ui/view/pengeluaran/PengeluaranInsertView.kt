@@ -82,9 +82,6 @@ fun PengeluaranInsertView(
                 showPageTitle = true,
                 Judul = "Sudah Kah Anda Mengeluarkan Dana?",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 showRefreshButton = false,
                 onRefresh = {},
             )

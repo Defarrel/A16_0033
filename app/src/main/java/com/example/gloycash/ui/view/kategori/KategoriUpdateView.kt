@@ -38,9 +38,6 @@ fun KategoriUpdateView(
                 showPageTitle = true,
                 Judul = "Update Kategori",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 showRefreshButton = false,
                 onRefresh = {},
             )

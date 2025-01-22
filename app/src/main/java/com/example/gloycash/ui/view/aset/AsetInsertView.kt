@@ -72,9 +72,6 @@ fun AsetInsertView(
                 showPageTitle = true,
                 Judul = "Masukan Aset Baru",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 showRefreshButton = false,
                 onRefresh = {},
             )

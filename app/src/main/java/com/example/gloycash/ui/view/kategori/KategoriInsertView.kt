@@ -70,9 +70,6 @@ fun KategoriInsertView(
                 showPageTitle = true,
                 Judul = "Masukkan Kategori Baru",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 showRefreshButton = false,
                 onRefresh = {},
             )

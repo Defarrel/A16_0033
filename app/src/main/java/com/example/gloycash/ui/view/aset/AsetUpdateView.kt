@@ -39,9 +39,6 @@ fun AsetUpdateView(
                 showPageTitle = true,
                 Judul = "Update Aset",
                 saldo = "",
-                pendapatan = "",
-                pengeluaran = "",
-                saldoColor = MaterialTheme.colorScheme.primary,
                 showRefreshButton = false,
                 onRefresh = {},
             )
