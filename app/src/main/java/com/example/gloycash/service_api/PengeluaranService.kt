@@ -23,15 +23,15 @@ interface PengeluaranService {
     @POST("store")
     suspend fun insertPengeluaran(@Body pengeluaran: Pengeluaran)
 
-    @GET("pendapatan/pengeluaran")
+    @GET("pengeluaran")
     suspend fun getPengeluaran(): AllPengeluaranResponse
 
-    @GET("{id}")
+    @GET("pengeluaran/{id}")
     suspend fun getPengeluaranById(@Path("id") id: Int): PengeluaranDetailResponse
 
-    @PUT("{id}")
+    @PUT("pengeluaran/{id}")
     suspend fun updatePengeluaran(@Path("id") id: Int, @Body pengeluaran: Pengeluaran)
 
-    @DELETE("{id}")
+    @DELETE("pengeluaran/{id}")
     suspend fun deletePengeluaran(@Path("id") id: Int): Response<Void>
 }

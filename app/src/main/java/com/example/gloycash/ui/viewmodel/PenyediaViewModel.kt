@@ -1,5 +1,8 @@
 package com.example.gloycash.ui.viewmodel
 
+import PendapatanDetailViewModel
+import PendapatanInsertViewModel
+import PengeluaranDetailViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.createSavedStateHandle
 import androidx.lifecycle.viewmodel.CreationExtras
@@ -14,20 +17,19 @@ import com.example.gloycash.ui.viewmodel.aset.AsetDetailViewModel
 import com.example.gloycash.ui.viewmodel.aset.AsetHomeViewModel
 import com.example.gloycash.ui.viewmodel.aset.AsetInsertViewModel
 import com.example.gloycash.ui.viewmodel.aset.AsetUpdateViewModel
-import com.example.gloycash.ui.viewmodel.home.HomeViewModel
 import com.example.gloycash.ui.viewmodel.kategori.KategoriDetailViewModel
 import com.example.gloycash.ui.viewmodel.kategori.KategoriHomeViewModel
 import com.example.gloycash.ui.viewmodel.kategori.KategoriInsertViewModel
 import com.example.gloycash.ui.viewmodel.kategori.KategoriUpdateViewModel
 import com.example.gloycash.ui.viewmodel.pendapatan.PendapatanHomeViewModel
+import com.example.gloycash.ui.viewmodel.pendapatan.PendapatanUpdateViewModel
+import com.example.gloycash.ui.viewmodel.pengeluaran.PengeluaranHomeViewModel
+import com.example.gloycash.ui.viewmodel.pengeluaran.PengeluaranInsertEvent
+import com.example.gloycash.ui.viewmodel.pengeluaran.PengeluaranInsertViewModel
+import com.example.gloycash.ui.viewmodel.pengeluaran.PengeluaranUpdateViewModel
 
 object PenyediaViewModel{
     val Factory = viewModelFactory {
-        initializer {
-            PendapatanHomeViewModel(
-                GloyCash().container.pendapatanRepository)
-        }
-
         // Aset
         initializer {
             AsetHomeViewModel(
@@ -73,6 +75,58 @@ object PenyediaViewModel{
             KategoriUpdateViewModel(
                 createSavedStateHandle(),
                 GloyCash().container.kategoriRepository
+            )
+        }
+
+        // Pendapatan
+        initializer {
+            PendapatanHomeViewModel(
+                GloyCash().container.pendapatanRepository
+            )
+        }
+        initializer {
+            PendapatanInsertViewModel(
+                GloyCash().container.pendapatanRepository,
+                GloyCash().container.kategoriRepository,
+                GloyCash().container.asetRepository
+            )
+        }
+        initializer {
+            PendapatanDetailViewModel(
+                createSavedStateHandle(),
+                GloyCash().container.pendapatanRepository,
+            )
+        }
+        initializer {
+            PendapatanUpdateViewModel(
+                createSavedStateHandle(),
+                GloyCash().container.pendapatanRepository,
+            )
+        }
+
+        // Pengeluaran
+        initializer {
+            PengeluaranHomeViewModel(
+                GloyCash().container.pengeluaranRepository
+            )
+        }
+        initializer {
+            PengeluaranInsertViewModel(
+                GloyCash().container.pengeluaranRepository,
+                GloyCash().container.kategoriRepository,
+                GloyCash().container.asetRepository
+            )
+        }
+        initializer {
+            PengeluaranDetailViewModel(
+                createSavedStateHandle(),
+                GloyCash().container.pengeluaranRepository,
+            )
+        }
+        initializer {
+            PengeluaranUpdateViewModel(
+                createSavedStateHandle(),
+                GloyCash().container.pengeluaranRepository,
             )
         }
     }
