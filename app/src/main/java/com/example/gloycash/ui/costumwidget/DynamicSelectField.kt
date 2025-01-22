@@ -52,7 +52,7 @@ fun DynamicSelectField(
                     expanded = expanded
                 ) },
             colors = OutlinedTextFieldDefaults.colors(
-                focusedBorderColor = colorResource(id = R.color.black),
+                focusedBorderColor = colorResource(id = R.color.warna2),
                 focusedTextColor = colorResource(id = R.color.black),
                 unfocusedTextColor = colorResource(id = R.color.black),
                 cursorColor = colorResource(id = R.color.black)),
