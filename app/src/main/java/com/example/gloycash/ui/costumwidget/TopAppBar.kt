@@ -41,6 +41,7 @@ fun TopAppBar(
     showPageTitle: Boolean = true,
     Judul: String,
     saldo: String,
+    saldoColor: Color = colorResource(id = R.color.white),
     modifier: Modifier = Modifier,
     onRefresh: () -> Unit,
     showRefreshButton: Boolean = true
@@ -157,7 +158,7 @@ fun TopAppBar(
                             text = "Rp. $saldo",
                             fontSize = 16.sp,
                             fontWeight = FontWeight.Medium,
-                            color = colorResource(id = R.color.white)
+                            color = saldoColor
                         )
                     }
                 }
