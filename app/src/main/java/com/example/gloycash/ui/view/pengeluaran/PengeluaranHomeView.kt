@@ -8,6 +8,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
@@ -37,6 +38,7 @@ fun PengeluaranHomeView(
     navigateToPengeluaran: () -> Unit,
     navigateToAset: () -> Unit,
     navigateToKategori: () -> Unit,
+    navigateToHome: () -> Unit,
     onDetailClick: (Int) -> Unit = {},
     viewModel: PengeluaranHomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -61,14 +63,28 @@ fun PengeluaranHomeView(
         bottomBar = {
             BottomAppBar(
                 showTambahClick = true,
-                showFormAddClick = true,
+                showFormAddClick = false,
                 onPendapatanClick = navigateToPendapatan,
                 onPengeluaranClick = navigateToPengeluaran,
                 onAsetClick = navigateToAset,
                 onKategoriClick = navigateToKategori,
-                onAdd = navigateToInsert,
+                onAdd = navigateToHome,
             )
         },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = navigateToInsert,
+                containerColor = colorResource(id = R.color.warna3),
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.padding(18.dp)
+            ) {
+                Icon(
+                    tint = colorResource(id = R.color.white),
+                    imageVector = Icons.Default.Add,
+                    contentDescription = ""
+                )
+            }
+        }
     ) { innerPadding ->
         PengeluaranStatus(
             pengeluaranUiState = viewModel.uiState,

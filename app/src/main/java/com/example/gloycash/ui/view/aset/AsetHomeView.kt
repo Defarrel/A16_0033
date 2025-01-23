@@ -21,6 +21,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Delete
+import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material.icons.outlined.ShoppingCart
 import androidx.compose.material3.AlertDialog
@@ -69,6 +70,7 @@ fun AsetHomeView(
     navigateToPengeluaran: () -> Unit,
     navigateToAset: () -> Unit,
     navigateToKategori: () -> Unit,
+    navigateToHome: () -> Unit,
     viewModel: AsetHomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -90,14 +92,28 @@ fun AsetHomeView(
         bottomBar = {
             BottomAppBar(
                 showTambahClick = true,
-                showFormAddClick = true,
+                showFormAddClick = false,
                 onPendapatanClick = navigateToPendapatan,
                 onPengeluaranClick = navigateToPengeluaran,
                 onAsetClick = navigateToAset,
                 onKategoriClick = navigateToKategori,
-                onAdd = navigateToInsert,
+                onAdd = navigateToHome,
             )
         },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = navigateToInsert,
+                containerColor = colorResource(id = R.color.warna3),
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.padding(18.dp)
+            ) {
+                Icon(
+                    tint = colorResource(id = R.color.white),
+                    imageVector = Icons.Default.Add,
+                    contentDescription = ""
+                )
+            }
+        }
     ) { innerPadding ->
         HomeStatus(
             homeUiState = viewModel.uiState,

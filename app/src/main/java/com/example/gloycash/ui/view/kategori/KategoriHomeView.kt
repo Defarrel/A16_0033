@@ -18,11 +18,13 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
@@ -55,6 +57,7 @@ fun KategoriHomeView(
     navigateToPengeluaran: () -> Unit,
     navigateToAset: () -> Unit,
     navigateToKategori: () -> Unit,
+    navigateToHome: () -> Unit,
     modifier: Modifier = Modifier,
     onDetailClick: (Int) -> Unit = {},
     viewModel: KategoriHomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
@@ -78,14 +81,28 @@ fun KategoriHomeView(
         bottomBar = {
             BottomAppBar(
                 showTambahClick = true,
-                showFormAddClick = true,
+                showFormAddClick = false,
                 onPendapatanClick = navigateToPendapatan,
                 onPengeluaranClick = navigateToPengeluaran,
                 onAsetClick = navigateToAset,
                 onKategoriClick = navigateToKategori,
-                onAdd = navigateToInsert,
+                onAdd = navigateToHome,
             )
         },
+        floatingActionButton = {
+            FloatingActionButton(
+                onClick = navigateToInsert,
+                containerColor = colorResource(id = R.color.warna3),
+                shape = MaterialTheme.shapes.medium,
+                modifier = Modifier.padding(18.dp)
+            ) {
+                Icon(
+                    tint = colorResource(id = R.color.white),
+                    imageVector = Icons.Default.Add,
+                    contentDescription = ""
+                )
+            }
+        }
     ) { innerPadding ->
         HomeStatus(
             homeUiState = viewModel.uiState,

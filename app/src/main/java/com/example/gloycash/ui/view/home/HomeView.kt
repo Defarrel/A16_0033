@@ -53,7 +53,7 @@ fun HomeView(
         bottomBar = {
             BottomAppBar(
                 showTambahClick = true,
-                showFormAddClick = false,
+                showFormAddClick = true,
                 onPendapatanClick = navigateToPendapatan,
                 onPengeluaranClick = navigateToPengeluaran,
                 onAsetClick = navigateToAset,
