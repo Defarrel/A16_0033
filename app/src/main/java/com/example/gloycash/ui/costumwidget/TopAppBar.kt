@@ -119,7 +119,7 @@ fun TopAppBar(
                     Image(
                         painter = painterResource(id = R.drawable.gloycash),
                         contentDescription = "Logo",
-                        modifier = Modifier.size(100.dp)
+                        modifier = Modifier.size(70.dp)
                     )
                 }
 
@@ -142,11 +142,12 @@ fun TopAppBar(
                 if (showSaldo) {
                     Column(
                         modifier = Modifier
-                            .padding(top = 8.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally
+                            .padding(start = 25.dp, bottom = 16.dp),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
                     ) {
                         Text(
-                            text = "Uang Anda Sekarang",
+                            text = "Saldo Anda Sekarang",
                             fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
                             color = colorResource(id = R.color.white)
