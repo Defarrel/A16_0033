@@ -51,8 +51,8 @@ class PengeluaranInsertViewModel(
     private fun validateFields(): Boolean {
         val event = uiState.insertUiEvent
         val errorState = FormErrorStatePengeluaran(
-            idKategori = if (event.idKategori.isNotEmpty()) null else "Nama Kategori tidak boleh kosong",
-            idAset = if (event.idAset.isNotEmpty()) null else "Nama Aset tidak boleh kosong",
+            idKategori = if (event.idKategori.toIntOrNull() != null) null else "Nama Kategori tidak valid",
+            idAset = if (event.idAset.toIntOrNull() != null) null else "Nama Aset tidak valid",
             total = if (event.total.isNotEmpty()) null else "Total tidak boleh kosong",
             tanggalTransaksi = if (event.tanggalTransaksi.isNotEmpty()) null else "Tanggal Transaksi tidak boleh kosong",
             catatan = if (event.catatan.isNotEmpty()) null else "Catatan tidak boleh kosong"
@@ -134,8 +134,8 @@ data class PengeluaranInsertEvent(
 )
 
 fun PengeluaranInsertEvent.toPengeluaran(): Pengeluaran {
-    val idKategoriParsed = try { idKategori.toInt() } catch (e: NumberFormatException) { 0 }
-    val idAsetParsed = try { idAset.toInt() } catch (e: NumberFormatException) { 0 }
+    val idKategoriParsed = idKategori.toIntOrNull() ?: throw IllegalArgumentException("ID Kategori tidak valid")
+    val idAsetParsed = idAset.toIntOrNull() ?: throw IllegalArgumentException("ID Aset tidak valid")
 
     return Pengeluaran(
         total = total.toFloat(),
@@ -145,4 +145,5 @@ fun PengeluaranInsertEvent.toPengeluaran(): Pengeluaran {
         catatan = catatan
     )
 }
+
 

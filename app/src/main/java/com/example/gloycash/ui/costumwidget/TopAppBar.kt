@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Refresh
@@ -47,116 +48,100 @@ fun TopAppBar(
     showRefreshButton: Boolean = true
 ) {
     Column(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .padding(bottom = 16.dp)
     ) {
         Surface(
             color = colorResource(id = R.color.warna1),
-            shadowElevation = 4.dp,
+            shadowElevation = 8.dp,
+            shape = RoundedCornerShape(bottomEnd = 29.dp)
         ) {
             Column {
-                Row(
+                Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp, horizontal = 16.dp),
-                    verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween
+                        .padding(vertical = 8.dp, horizontal = 16.dp)
                 ) {
-                    Column {
-                        Row(
-                            verticalAlignment = Alignment.CenterVertically
-                        ) {
-                            if (showBackButton) {
-                                IconButton(onClick = onBack) {
-                                    Icon(
-                                        imageVector = Icons.Default.ArrowBack,
-                                        contentDescription = "Back",
-                                        tint = colorResource(id = R.color.white)
-                                    )
-                                }
-                            }
-
-                            if (showProfile) {
-                                Row(
-                                    verticalAlignment = Alignment.CenterVertically,
-                                    horizontalArrangement = Arrangement.spacedBy(8.dp)
-                                ) {
-                                    Image(
-                                        painter = painterResource(id = R.drawable.me),
-                                        contentDescription = null,
-                                        modifier = Modifier
-                                            .size(40.dp)
-                                            .clip(shape = CircleShape)
-                                    )
-                                    Column {
-                                        Text(
-                                            text = "Welcome",
-                                            fontSize = 13.sp,
-                                            color = colorResource(id = R.color.white)
-                                        )
-                                        Text(
-                                            text = "Defarrel Danendra Praja",
-                                            fontSize = 15.sp,
-                                            fontWeight = FontWeight.Bold,
-                                            color = colorResource(id = R.color.white)
-                                        )
-                                    }
-                                }
+                    Row(
+                        modifier = Modifier.align(Alignment.CenterStart),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        if (showBackButton) {
+                            IconButton(onClick = onBack) {
+                                Icon(
+                                    imageVector = Icons.Default.ArrowBack,
+                                    contentDescription = "Back",
+                                    tint = colorResource(id = R.color.white)
+                                )
                             }
                         }
 
-                        if (showPageTitle) {
-                            Text(
-                                text = Judul,
-                                fontSize = 20.sp,
-                                fontWeight = FontWeight.Bold,
-                                color = colorResource(id = R.color.white),
-                                modifier = Modifier.padding(top = 8.dp)
-                            )
+                        if (showProfile) {
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                                horizontalArrangement = Arrangement.spacedBy(8.dp)
+                            ) {
+                                Image(
+                                    painter = painterResource(id = R.drawable.me),
+                                    contentDescription = null,
+                                    modifier = Modifier
+                                        .size(40.dp)
+                                        .clip(CircleShape)
+                                )
+                                Column {
+                                    Text(
+                                        text = "Welcome",
+                                        fontSize = 13.sp,
+                                        color = colorResource(id = R.color.white)
+                                    )
+                                    Text(
+                                        text = "Defarrel Danendra Praja",
+                                        fontSize = 15.sp,
+                                        fontWeight = FontWeight.Bold,
+                                        color = colorResource(id = R.color.white)
+                                    )
+                                }
+                            }
                         }
                     }
 
                     Image(
                         painter = painterResource(id = R.drawable.gloycash),
                         contentDescription = "Logo",
-                        modifier = Modifier.size(70.dp)
+                        modifier = Modifier
+                            .align(Alignment.CenterEnd)
+                            .size(70.dp)
+                            .clip(CircleShape)
                     )
                 }
 
-                if (showRefreshButton) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth(),
-                        horizontalArrangement = Arrangement.End
-                    ) {
-                        IconButton(onClick = onRefresh) {
-                            Icon(
-                                imageVector = Icons.Filled.Refresh,
-                                contentDescription = "Refresh",
-                                tint = colorResource(id = R.color.white)
-                            )
-                        }
-                    }
+                if (showPageTitle) {
+                    Text(
+                        text = Judul,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.Bold,
+                        color = colorResource(id = R.color.white),
+                        modifier = Modifier.padding(start = 16.dp, top = 3.dp, bottom = 16.dp)
+                    )
                 }
 
                 if (showSaldo) {
                     Column(
                         modifier = Modifier
-                            .padding(start = 25.dp, bottom = 16.dp),
-                        horizontalAlignment = Alignment.CenterHorizontally,
-                        verticalArrangement = Arrangement.Center
+                            .padding(start = 30.dp, bottom = 16.dp)
+                            .fillMaxWidth(),
+                        horizontalAlignment = Alignment.Start
                     ) {
                         Text(
                             text = "Saldo Anda Sekarang",
-                            fontSize = 20.sp,
+                            fontSize = 18.sp,
                             fontWeight = FontWeight.Bold,
                             color = colorResource(id = R.color.white)
                         )
                         Spacer(modifier = Modifier.height(4.dp))
                         Text(
                             text = "Rp. $saldo",
-                            fontSize = 16.sp,
+                            fontSize = 18.sp,
                             fontWeight = FontWeight.Medium,
                             color = saldoColor
                         )
@@ -164,12 +149,23 @@ fun TopAppBar(
                 }
             }
         }
+
+        if (showRefreshButton) {
+            Box(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(horizontal = 16.dp),
+                contentAlignment = Alignment.CenterEnd
+            ) {
+                IconButton(onClick = onRefresh) {
+                    Icon(
+                        imageVector = Icons.Filled.Refresh,
+                        contentDescription = "Refresh",
+                        tint = colorResource(id = R.color.warna1)
+                    )
+                }
+            }
+        }
     }
 }
-
-
-
-
-
-
 

@@ -157,7 +157,7 @@ fun HomeStatus(
 @Composable
 fun OnLoading(modifier: Modifier = Modifier) {
     Image(
-        modifier = modifier.size(200.dp),
+        modifier = modifier.size(100.dp),
         painter = painterResource(id = R.drawable.loading),
         contentDescription = null
     )

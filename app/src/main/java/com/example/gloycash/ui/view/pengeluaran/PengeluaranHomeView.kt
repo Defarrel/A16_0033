@@ -55,7 +55,7 @@ fun PengeluaranHomeView(
                 showProfile = true,
                 showSaldo = false,
                 showPageTitle = true,
-                Judul = "Total Pengeluaran: Rp ${totalPengeluaran}",
+                Judul = "Pengeluaran: Rp ${totalPengeluaran}",
                 saldo = "",
                 onRefresh = viewModel::getPengeluaran
             )

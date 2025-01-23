@@ -84,7 +84,7 @@ fun PengeluaranInsertView(
                 showProfile = true,
                 showSaldo = false,
                 showPageTitle = true,
-                Judul = "Sudah Kah Anda Mengeluarkan Dana?",
+                Judul = "Sudah Kah Anda Menabung?",
                 saldo = "",
                 showRefreshButton = false,
                 onRefresh = {},

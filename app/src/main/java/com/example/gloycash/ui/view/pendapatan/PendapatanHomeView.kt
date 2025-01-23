@@ -53,10 +53,10 @@ fun PendapatanHomeView(
                 onBack = {},
                 showBackButton = false,
                 showProfile = true,
-                showSaldo = false,
-                showPageTitle = true,
-                Judul = "Total Pendapatan: Rp ${totalPendapatan.toInt()}",
-                saldo = "",
+                showSaldo = true,
+                showPageTitle = false,
+                Judul = "",
+                saldo = "Rp. ${totalPendapatan.toInt()}",
                 onRefresh = viewModel::getPendapatan
             )
         },
