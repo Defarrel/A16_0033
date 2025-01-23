@@ -70,6 +70,21 @@ fun PengelolaHalaman(
                     navController.navigate(DestinasiHomePengeluaran.route) {
                         popUpTo(DestinasiHomePengeluaran.route) { inclusive = true }
                     }
+                },
+                navigateToPendapatan = {
+                    navController.navigate(DestinasiHomePendapatan.route) {
+                        popUpTo(DestinasiHomePendapatan.route) { inclusive = true }
+                    }
+                },
+                navigateToAset = {
+                    navController.navigate(DestinasiHomeAset.route) {
+                        popUpTo(DestinasiHomeAset.route) { inclusive = true }
+                    }
+                },
+                navigateToKategori = {
+                    navController.navigate(DestinasiHomeKategori.route) {
+                        popUpTo(DestinasiHomeKategori.route) { inclusive = true }
+                    }
                 }
             )
         }
@@ -82,6 +97,26 @@ fun PengelolaHalaman(
                     navController.navigate("${DestinasiDetailPengeluaran.route}/$id") {
                     }
                     println("Detail Pengeluaran ID: $id")
+                },
+                navigateToPengeluaran = {
+                    navController.navigate(DestinasiHomePengeluaran.route) {
+                        popUpTo(DestinasiHomePengeluaran.route) { inclusive = true }
+                    }
+                },
+                navigateToPendapatan = {
+                    navController.navigate(DestinasiHomePendapatan.route) {
+                        popUpTo(DestinasiHomePendapatan.route) { inclusive = true }
+                    }
+                },
+                navigateToAset = {
+                    navController.navigate(DestinasiHomeAset.route) {
+                        popUpTo(DestinasiHomeAset.route) { inclusive = true }
+                    }
+                },
+                navigateToKategori = {
+                    navController.navigate(DestinasiHomeKategori.route) {
+                        popUpTo(DestinasiHomeKategori.route) { inclusive = true }
+                    }
                 }
             )
         }
@@ -111,6 +146,26 @@ fun PengelolaHalaman(
                                 inclusive = true
                             }
                         }
+                    },
+                    navigateToPengeluaran = {
+                        navController.navigate(DestinasiHomePengeluaran.route) {
+                            popUpTo(DestinasiHomePengeluaran.route) { inclusive = true }
+                        }
+                    },
+                    navigateToPendapatan = {
+                        navController.navigate(DestinasiHomePendapatan.route) {
+                            popUpTo(DestinasiHomePendapatan.route) { inclusive = true }
+                        }
+                    },
+                    navigateToAset = {
+                        navController.navigate(DestinasiHomeAset.route) {
+                            popUpTo(DestinasiHomeAset.route) { inclusive = true }
+                        }
+                    },
+                    navigateToKategori = {
+                        navController.navigate(DestinasiHomeKategori.route) {
+                            popUpTo(DestinasiHomeKategori.route) { inclusive = true }
+                        }
                     }
                 )
             }
@@ -130,6 +185,26 @@ fun PengelolaHalaman(
                             popUpTo(DestinasiHomePengeluaran.route) {
                                 inclusive = true
                             }
+                        }
+                    },
+                    navigateToPengeluaran = {
+                        navController.navigate(DestinasiHomePengeluaran.route) {
+                            popUpTo(DestinasiHomePengeluaran.route) { inclusive = true }
+                        }
+                    },
+                    navigateToPendapatan = {
+                        navController.navigate(DestinasiHomePendapatan.route) {
+                            popUpTo(DestinasiHomePendapatan.route) { inclusive = true }
+                        }
+                    },
+                    navigateToAset = {
+                        navController.navigate(DestinasiHomeAset.route) {
+                            popUpTo(DestinasiHomeAset.route) { inclusive = true }
+                        }
+                    },
+                    navigateToKategori = {
+                        navController.navigate(DestinasiHomeKategori.route) {
+                            popUpTo(DestinasiHomeKategori.route) { inclusive = true }
                         }
                     }
                 )
