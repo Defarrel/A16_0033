@@ -85,6 +85,11 @@ fun PengelolaHalaman(
                     navController.navigate(DestinasiHomeKategori.route) {
                         popUpTo(DestinasiHomeKategori.route) { inclusive = true }
                     }
+                },
+                navigateToData = {
+                    navController.navigate(DestinasiHomePengeluaran.route) {
+                        popUpTo(DestinasiHomePengeluaran.route) { inclusive = true }
+                    }
                 }
             )
         }
@@ -242,6 +247,11 @@ fun PengelolaHalaman(
                 navigateToKategori = {
                     navController.navigate(DestinasiHomeKategori.route) {
                         popUpTo(DestinasiHomeKategori.route) { inclusive = true }
+                    }
+                },
+                navigateToData = {
+                    navController.navigate(DestinasiHomePendapatan.route) {
+                        popUpTo(DestinasiHomePendapatan.route) { inclusive = true }
                     }
                 }
             )

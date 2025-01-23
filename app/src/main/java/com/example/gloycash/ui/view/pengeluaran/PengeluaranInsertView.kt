@@ -58,6 +58,7 @@ fun PengeluaranInsertView(
     navigateToPendapatan: () -> Unit,
     navigateToAset: () -> Unit,
     navigateToKategori: () -> Unit,
+    navigateToData: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: PengeluaranInsertViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -111,7 +112,7 @@ fun PengeluaranInsertView(
                 pengeluaranInsertUiState = viewModel.uiState,
                 onPengeluaranValueChange = viewModel::updateInsertPengeluaranState,
                 onSaveClick = { coroutineScope.launch { viewModel.insertPengeluaran() } },
-                onViewAllClick = navigateToPengeluaran,
+                onViewAllClick = navigateToData,
                 modifier = Modifier.fillMaxWidth()
             )
         }
