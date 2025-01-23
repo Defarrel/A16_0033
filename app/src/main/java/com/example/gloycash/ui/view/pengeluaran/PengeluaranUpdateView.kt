@@ -20,6 +20,10 @@ import kotlinx.coroutines.launch
 @Composable
 fun PengeluaranUpdateView(
     navigateBack: () -> Unit,
+    navigateToPendapatan: () -> Unit,
+    navigateToPengeluaran: () -> Unit,
+    navigateToAset: () -> Unit,
+    navigateToKategori: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: PengeluaranUpdateViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -46,10 +50,10 @@ fun PengeluaranUpdateView(
             BottomAppBar(
                 showTambahClick = true,
                 showFormAddClick = false,
-                onPendapatanClick = {},
-                onPengeluaranClick = {},
-                onAsetClick = {},
-                onKategoriClick = {},
+                onPendapatanClick = navigateToPendapatan,
+                onPengeluaranClick = navigateToPengeluaran,
+                onAsetClick = navigateToAset,
+                onKategoriClick = navigateToKategori,
                 onAdd = navigateBack,
             )
         },

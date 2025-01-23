@@ -55,6 +55,9 @@ import kotlinx.coroutines.launch
 fun PengeluaranInsertView(
     navigateBack: () -> Unit,
     navigateToPengeluaran: () -> Unit,
+    navigateToPendapatan: () -> Unit,
+    navigateToAset: () -> Unit,
+    navigateToKategori: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: PengeluaranInsertViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -90,10 +93,10 @@ fun PengeluaranInsertView(
             BottomAppBar(
                 showTambahClick = true,
                 showFormAddClick = false,
-                onPendapatanClick = {},
+                onPendapatanClick = navigateToPendapatan,
                 onPengeluaranClick = navigateToPengeluaran,
-                onAsetClick = {},
-                onKategoriClick = {},
+                onAsetClick = navigateToAset,
+                onKategoriClick = navigateToKategori,
                 onAdd = navigateBack,
             )
         },

@@ -57,6 +57,10 @@ fun PengeluaranDetailView(
     navigateBack: () -> Unit,
     navigateToEdit: () -> Unit,
     onNavigateToHome: () -> Unit,
+    navigateToPendapatan: () -> Unit,
+    navigateToPengeluaran: () -> Unit,
+    navigateToAset: () -> Unit,
+    navigateToKategori: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: PengeluaranDetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -81,10 +85,10 @@ fun PengeluaranDetailView(
             BottomAppBar(
                 showTambahClick = true,
                 showFormAddClick = false,
-                onPendapatanClick = {},
-                onPengeluaranClick = {},
-                onAsetClick = {},
-                onKategoriClick = {},
+                onPendapatanClick = navigateToPendapatan,
+                onPengeluaranClick = navigateToPengeluaran,
+                onAsetClick = navigateToAset,
+                onKategoriClick = navigateToKategori,
                 onAdd = navigateBack
             )
         },

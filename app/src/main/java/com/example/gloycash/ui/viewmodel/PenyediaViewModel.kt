@@ -17,6 +17,7 @@ import com.example.gloycash.ui.viewmodel.aset.AsetDetailViewModel
 import com.example.gloycash.ui.viewmodel.aset.AsetHomeViewModel
 import com.example.gloycash.ui.viewmodel.aset.AsetInsertViewModel
 import com.example.gloycash.ui.viewmodel.aset.AsetUpdateViewModel
+import com.example.gloycash.ui.viewmodel.home.HomeViewModel
 import com.example.gloycash.ui.viewmodel.kategori.KategoriDetailViewModel
 import com.example.gloycash.ui.viewmodel.kategori.KategoriHomeViewModel
 import com.example.gloycash.ui.viewmodel.kategori.KategoriInsertViewModel
@@ -30,6 +31,14 @@ import com.example.gloycash.ui.viewmodel.pengeluaran.PengeluaranUpdateViewModel
 
 object PenyediaViewModel{
     val Factory = viewModelFactory {
+        //home
+        initializer {
+            HomeViewModel(
+                GloyCash().container.pendapatanRepository,
+                GloyCash().container.pengeluaranRepository
+            )
+        }
+
         // Aset
         initializer {
             AsetHomeViewModel(

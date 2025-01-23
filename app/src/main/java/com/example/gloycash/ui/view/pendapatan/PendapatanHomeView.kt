@@ -34,6 +34,10 @@ fun PendapatanHomeView(
     navigateToInsert: () -> Unit,
     modifier: Modifier = Modifier,
     onDetailClick: (Int) -> Unit = {},
+    navigateToPendapatan: () -> Unit,
+    navigateToPengeluaran: () -> Unit,
+    navigateToAset: () -> Unit,
+    navigateToKategori: () -> Unit,
     viewModel: PendapatanHomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
@@ -58,10 +62,10 @@ fun PendapatanHomeView(
             BottomAppBar(
                 showTambahClick = true,
                 showFormAddClick = true,
-                onPendapatanClick = {},
-                onPengeluaranClick = {},
-                onAsetClick = {},
-                onKategoriClick = {},
+                onPendapatanClick = navigateToPendapatan,
+                onPengeluaranClick = navigateToPengeluaran,
+                onAsetClick = navigateToAset,
+                onKategoriClick = navigateToKategori,
                 onAdd = navigateToInsert,
             )
         },

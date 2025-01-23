@@ -22,6 +22,10 @@ import kotlinx.coroutines.launch
 fun PendapatanUpdateView(
     navigateBack: () -> Unit,
     modifier: Modifier = Modifier,
+    navigateToPendapatan: () -> Unit,
+    navigateToPengeluaran: () -> Unit,
+    navigateToAset: () -> Unit,
+    navigateToKategori: () -> Unit,
     viewModel: PendapatanUpdateViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val insertUiState = viewModel.updateUIState
@@ -47,10 +51,10 @@ fun PendapatanUpdateView(
             BottomAppBar(
                 showTambahClick = true,
                 showFormAddClick = false,
-                onPendapatanClick = {},
-                onPengeluaranClick = {},
-                onAsetClick = {},
-                onKategoriClick = {},
+                onPendapatanClick = navigateToPendapatan,
+                onPengeluaranClick = navigateToPengeluaran,
+                onAsetClick = navigateToAset,
+                onKategoriClick = navigateToKategori,
                 onAdd = navigateBack,
             )
         },

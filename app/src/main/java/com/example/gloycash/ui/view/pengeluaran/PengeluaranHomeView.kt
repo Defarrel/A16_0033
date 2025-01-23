@@ -33,6 +33,10 @@ import com.example.gloycash.ui.viewmodel.pengeluaran.PengeluaranUiState
 fun PengeluaranHomeView(
     navigateToInsert: () -> Unit,
     modifier: Modifier = Modifier,
+    navigateToPendapatan: () -> Unit,
+    navigateToPengeluaran: () -> Unit,
+    navigateToAset: () -> Unit,
+    navigateToKategori: () -> Unit,
     onDetailClick: (Int) -> Unit = {},
     viewModel: PengeluaranHomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -58,10 +62,10 @@ fun PengeluaranHomeView(
             BottomAppBar(
                 showTambahClick = true,
                 showFormAddClick = true,
-                onPendapatanClick = {},
-                onPengeluaranClick = {},
-                onAsetClick = {},
-                onKategoriClick = {},
+                onPendapatanClick = navigateToPendapatan,
+                onPengeluaranClick = navigateToPengeluaran,
+                onAsetClick = navigateToAset,
+                onKategoriClick = navigateToKategori,
                 onAdd = navigateToInsert,
             )
         },
