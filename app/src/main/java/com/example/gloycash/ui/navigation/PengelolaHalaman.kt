@@ -395,6 +395,34 @@ fun PengelolaHalaman(
                     onDetailClick = {id ->
                         navController.navigate("${DestinasiDetailAset.route}/$id")
                         println("Detail Aset ID: $id")
+                    },
+                    navigateToPengeluaran = {
+                        navController.navigate(DestinasiHomePengeluaran.route) {
+                            popUpTo(DestinasiHomePengeluaran.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToAset = {
+                        navController.navigate(DestinasiHomeAset.route) {
+                            popUpTo(DestinasiHomeAset.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToKategori = {
+                        navController.navigate(DestinasiHomeKategori.route) {
+                            popUpTo(DestinasiHomeKategori.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToPendapatan = {
+                        navController.navigate(DestinasiHomePendapatan.route) {
+                            popUpTo(DestinasiHomePendapatan.route) {
+                                inclusive = true
+                            }
+                        }
                     }
                 )
             }
@@ -402,6 +430,34 @@ fun PengelolaHalaman(
                 AsetInsertView(
                     navigateBack = {
                         navController.navigate(DestinasiHomeAset.route)
+                    },
+                    navigateToPengeluaran = {
+                        navController.navigate(DestinasiHomePengeluaran.route) {
+                            popUpTo(DestinasiHomePengeluaran.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToAset = {
+                        navController.navigate(DestinasiHomeAset.route) {
+                            popUpTo(DestinasiHomeAset.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToKategori = {
+                        navController.navigate(DestinasiHomeKategori.route) {
+                            popUpTo(DestinasiHomeKategori.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToPendapatan = {
+                        navController.navigate(DestinasiHomePendapatan.route) {
+                            popUpTo(DestinasiHomePendapatan.route) {
+                                inclusive = true
+                            }
+                        }
                     }
                 )
             }
@@ -432,6 +488,34 @@ fun PengelolaHalaman(
                                     inclusive = true
                                 }
                             }
+                        },
+                        navigateToPengeluaran = {
+                            navController.navigate(DestinasiHomePengeluaran.route) {
+                                popUpTo(DestinasiHomePengeluaran.route) {
+                                    inclusive = true
+                                }
+                            }
+                        },
+                        navigateToAset = {
+                            navController.navigate(DestinasiHomeAset.route) {
+                                popUpTo(DestinasiHomeAset.route) {
+                                    inclusive = true
+                                }
+                            }
+                        },
+                        navigateToKategori = {
+                            navController.navigate(DestinasiHomeKategori.route) {
+                                popUpTo(DestinasiHomeKategori.route) {
+                                    inclusive = true
+                                }
+                            }
+                        },
+                        navigateToPendapatan = {
+                            navController.navigate(DestinasiHomePendapatan.route) {
+                                popUpTo(DestinasiHomePendapatan.route) {
+
+                                }
+                            }
                         }
                     )
                 }
@@ -454,6 +538,34 @@ fun PengelolaHalaman(
                                 }
                             }
                         },
+                        navigateToPengeluaran = {
+                            navController.navigate(DestinasiHomePengeluaran.route) {
+                                popUpTo(DestinasiHomePengeluaran.route) {
+                                    inclusive = true
+                                }
+                            }
+                        },
+                        navigateToAset = {
+                            navController.navigate(DestinasiHomeAset.route) {
+                                popUpTo(DestinasiHomeAset.route) {
+                                    inclusive = true
+                                }
+                            }
+                        },
+                        navigateToKategori = {
+                            navController.navigate(DestinasiHomeKategori.route) {
+                                popUpTo(DestinasiHomeKategori.route) {
+                                    inclusive = true
+                                }
+                            }
+                        },
+                        navigateToPendapatan = {
+                            navController.navigate(DestinasiHomePendapatan.route) {
+                                popUpTo(DestinasiHomePendapatan.route) {
+                                    inclusive = true
+                                }
+                            }
+                        }
                     )
                 }
             }
@@ -467,6 +579,34 @@ fun PengelolaHalaman(
                 onDetailClick = { id ->
                     navController.navigate("${DestinasiDetailKategori.route}/$id")
                     println("Detail Kategori ID: $id")
+                },
+                navigateToPengeluaran = {
+                    navController.navigate(DestinasiHomePengeluaran.route) {
+                        popUpTo(DestinasiHomePengeluaran.route) {
+                            inclusive = true
+                        }
+                    }
+                },
+                navigateToAset = {
+                    navController.navigate(DestinasiHomeAset.route) {
+                        popUpTo(DestinasiHomeAset.route) {
+                            inclusive = true
+                        }
+                    }
+                },
+                navigateToKategori = {
+                    navController.navigate(DestinasiHomeKategori.route) {
+                        popUpTo(DestinasiHomeKategori.route) {
+                            inclusive = true
+                        }
+                    }
+                },
+                navigateToPendapatan = {
+                    navController.navigate(DestinasiHomePendapatan.route) {
+                        popUpTo(DestinasiHomePendapatan.route) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
@@ -474,6 +614,34 @@ fun PengelolaHalaman(
             KategoriInsertView(
                 navigateBack = {
                     navController.navigate(DestinasiHomeKategori.route)
+                },
+                navigateToPengeluaran = {
+                    navController.navigate(DestinasiHomePengeluaran.route) {
+                        popUpTo(DestinasiHomePengeluaran.route) {
+                            inclusive = true
+                        }
+                    }
+                },
+                navigateToAset = {
+                    navController.navigate(DestinasiHomeAset.route) {
+                        popUpTo(DestinasiHomeAset.route) {
+                            inclusive = true
+                        }
+                    }
+                },
+                navigateToKategori = {
+                    navController.navigate(DestinasiHomeKategori.route) {
+                        popUpTo(DestinasiHomeKategori.route) {
+                            inclusive = true
+                        }
+                    }
+                },
+                navigateToPendapatan = {
+                    navController.navigate(DestinasiHomePendapatan.route) {
+                        popUpTo(DestinasiHomePendapatan.route) {
+                            inclusive = true
+                        }
+                    }
                 }
             )
         }
@@ -504,6 +672,34 @@ fun PengelolaHalaman(
                                 inclusive = true
                             }
                         }
+                    },
+                    navigateToPengeluaran = {
+                        navController.navigate(DestinasiHomePengeluaran.route) {
+                            popUpTo(DestinasiHomePengeluaran.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToAset = {
+                        navController.navigate(DestinasiHomeAset.route) {
+                            popUpTo(DestinasiHomeAset.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToKategori = {
+                        navController.navigate(DestinasiHomeKategori.route) {
+                            popUpTo(DestinasiHomeKategori.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToPendapatan = {
+                        navController.navigate(DestinasiHomePendapatan.route) {
+                            popUpTo(DestinasiHomePendapatan.route) {
+                                inclusive = true
+                            }
+                        }
                     }
                 )
             }
@@ -526,6 +722,34 @@ fun PengelolaHalaman(
                             }
                         }
                     },
+                    navigateToPengeluaran = {
+                        navController.navigate(DestinasiHomePengeluaran.route) {
+                            popUpTo(DestinasiHomePengeluaran.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToAset = {
+                        navController.navigate(DestinasiHomeAset.route) {
+                            popUpTo(DestinasiHomeAset.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToKategori = {
+                        navController.navigate(DestinasiHomeKategori.route) {
+                            popUpTo(DestinasiHomeKategori.route) {
+                                inclusive = true
+                            }
+                        }
+                    },
+                    navigateToPendapatan = {
+                        navController.navigate(DestinasiHomePendapatan.route) {
+                            popUpTo(DestinasiHomePendapatan.route) {
+                                inclusive = true
+                            }
+                        }
+                    }
                 )
             }
         }

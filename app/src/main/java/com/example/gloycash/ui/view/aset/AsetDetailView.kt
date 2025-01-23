@@ -66,6 +66,10 @@ fun AsetDetailView(
     navigateBack: () -> Unit,
     navigateToEdit: () -> Unit,
     onNavigateToHome: () -> Unit,
+    navigateToPendapatan: () -> Unit,
+    navigateToPengeluaran: () -> Unit,
+    navigateToAset: () -> Unit,
+    navigateToKategori: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: AsetDetailViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -89,10 +93,10 @@ fun AsetDetailView(
             BottomAppBar(
                 showTambahClick = true,
                 showFormAddClick = false,
-                onPendapatanClick = {},
-                onPengeluaranClick = {},
-                onAsetClick = {},
-                onKategoriClick = {},
+                onPendapatanClick = navigateToPendapatan,
+                onPengeluaranClick = navigateToPengeluaran,
+                onAsetClick = navigateToAset,
+                onKategoriClick = navigateToKategori,
                 onAdd = navigateBack,
             )
         },

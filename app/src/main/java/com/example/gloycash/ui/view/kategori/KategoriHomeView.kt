@@ -51,6 +51,10 @@ import com.example.gloycash.ui.viewmodel.kategori.KategoriUiState
 @Composable
 fun KategoriHomeView(
     navigateToInsert: () -> Unit,
+    navigateToPendapatan: () -> Unit,
+    navigateToPengeluaran: () -> Unit,
+    navigateToAset: () -> Unit,
+    navigateToKategori: () -> Unit,
     modifier: Modifier = Modifier,
     onDetailClick: (Int) -> Unit = {},
     viewModel: KategoriHomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
@@ -75,10 +79,10 @@ fun KategoriHomeView(
             BottomAppBar(
                 showTambahClick = true,
                 showFormAddClick = true,
-                onPendapatanClick = {},
-                onPengeluaranClick = {},
-                onAsetClick = {},
-                onKategoriClick = {},
+                onPendapatanClick = navigateToPendapatan,
+                onPengeluaranClick = navigateToPengeluaran,
+                onAsetClick = navigateToAset,
+                onKategoriClick = navigateToKategori,
                 onAdd = navigateToInsert,
             )
         },

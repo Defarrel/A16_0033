@@ -21,6 +21,10 @@ import kotlinx.coroutines.launch
 @Composable
 fun AsetUpdateView(
     navigateBack: () -> Unit,
+    navigateToPendapatan: () -> Unit,
+    navigateToPengeluaran: () -> Unit,
+    navigateToAset: () -> Unit,
+    navigateToKategori: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: AsetUpdateViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
@@ -47,10 +51,10 @@ fun AsetUpdateView(
             BottomAppBar(
                 showTambahClick = true,
                 showFormAddClick = false,
-                onPendapatanClick = {},
-                onPengeluaranClick = {},
-                onAsetClick = {},
-                onKategoriClick = {},
+                onPendapatanClick = navigateToPendapatan,
+                onPengeluaranClick = navigateToPengeluaran,
+                onAsetClick = navigateToAset,
+                onKategoriClick = navigateToKategori,
                 onAdd = navigateBack,
             )
         },
