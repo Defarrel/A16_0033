@@ -55,7 +55,7 @@ fun PendapatanHomeView(
                 showProfile = true,
                 showSaldo = false,
                 showPageTitle = true,
-                Judul = "Total Pendapatan: Rp ${totalPendapatan}",
+                Judul = "Total Pendapatan: Rp ${totalPendapatan.toInt()}",
                 saldo = "",
                 onRefresh = viewModel::getPendapatan
             )
@@ -204,7 +204,7 @@ fun PendapatanCard(
                         color = colorResource(id = R.color.white)
                     )
                     Text(
-                        text = "Total: ${pendapatan.total}",
+                        text = "Total: ${pendapatan.total.toInt()}",
                         style = MaterialTheme.typography.bodyMedium,
                         color = colorResource(id = R.color.white)
                     )

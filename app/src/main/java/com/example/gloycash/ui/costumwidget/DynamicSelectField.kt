@@ -17,7 +17,6 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
-import androidx.compose.ui.text.Placeholder
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
@@ -27,15 +26,17 @@ import com.example.gloycash.R
 @Composable
 fun DynamicSelectField(
     selectedValue: String,
-    options: List<String>,
+    options: List<Pair<Int, String>>,
     label: String,
     placeholder: String,
-    onValueChangedEvent: (String) -> Unit,
+    onValueChangedEvent: (Int) -> Unit,
     modifier: Modifier = Modifier
 ) {
     var expanded by remember {
         mutableStateOf(false)
     }
+    var displayText by remember { mutableStateOf("") }
+
     ExposedDropdownMenuBox(
         expanded = expanded,
         onExpandedChange = { expanded = !expanded },
@@ -43,19 +44,21 @@ fun DynamicSelectField(
     ) {
         OutlinedTextField(
             readOnly = true,
-            value = selectedValue,
+            value = displayText,
             onValueChange = {},
             label = { Text(text = label, modifier = Modifier, color = colorResource(id = R.color.black)) },
-            placeholder = { Text(text = placeholder)},
+            placeholder = { Text(text = placeholder) },
             trailingIcon = {
                 ExposedDropdownMenuDefaults.TrailingIcon(
                     expanded = expanded
-                ) },
+                )
+            },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = colorResource(id = R.color.warna2),
                 focusedTextColor = colorResource(id = R.color.black),
                 unfocusedTextColor = colorResource(id = R.color.black),
-                cursorColor = colorResource(id = R.color.black)),
+                cursorColor = colorResource(id = R.color.black)
+            ),
             keyboardOptions = KeyboardOptions(
                 keyboardType = KeyboardType.Text,
                 imeAction = ImeAction.Next
@@ -67,17 +70,21 @@ fun DynamicSelectField(
                 .fillMaxWidth()
         )
 
-        ExposedDropdownMenu(expanded = expanded,
-            onDismissRequest = { expanded = false }) {
-            options.forEach { option: String ->
+        ExposedDropdownMenu(
+            expanded = expanded,
+            onDismissRequest = { expanded = false }
+        ) {
+            options.forEach { option ->
                 DropdownMenuItem(
-                    text = { Text(text = option) },
+                    text = { Text(text = option.second) },
                     onClick = {
                         expanded = false
-                        onValueChangedEvent(option)
+                        displayText = option.second
+                        onValueChangedEvent(option.first)
                     },
                 )
             }
         }
     }
 }
+

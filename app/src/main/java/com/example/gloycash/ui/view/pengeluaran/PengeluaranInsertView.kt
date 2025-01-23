@@ -226,26 +226,26 @@ fun FormInput(
     ) {
         DynamicSelectField(
             selectedValue = insertUiEvent.idKategori,
-            options = kategoriList.data?.map { it.namaKategori } ?: emptyList(),
+            options = kategoriList.data?.map { it.id to it.namaKategori } ?: emptyList(),
             label = "Nama Kategori",
             placeholder = "Pilih Kategori Anda",
             onValueChangedEvent = {
-                onValueChange(insertUiEvent.copy(idKategori = it))
+                onValueChange(insertUiEvent.copy(idKategori = it.toString()))
             },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth()
         )
 
         Spacer(modifier = Modifier.height(12.dp))
 
         DynamicSelectField(
             selectedValue = insertUiEvent.idAset,
-            options = asetList.data?.map { it.namaAset } ?: emptyList(),
+            options = asetList.data?.map { it.id to it.namaAset } ?: emptyList(),
             label = "Nama Aset",
             placeholder = "Pilih Aset Anda",
             onValueChangedEvent = {
-                onValueChange(insertUiEvent.copy(idAset = it))
+                onValueChange(insertUiEvent.copy(idAset = it.toString()))
             },
-            modifier = Modifier.fillMaxWidth(),
+            modifier = Modifier.fillMaxWidth()
         )
         Text(
             text = ErrorState.idAset ?: "",
