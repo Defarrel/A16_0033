@@ -116,6 +116,7 @@ fun TopAppBar(
                         Column(
                             horizontalAlignment = Alignment.Start,
                             modifier = Modifier
+                                .weight(1f)
                                 .padding(start = 16.dp)
                         ) {
                             Text(

@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
@@ -26,6 +27,7 @@ import com.example.gloycash.ui.costumwidget.TopAppBar
 import com.example.gloycash.ui.view.aset.OnError
 import com.example.gloycash.ui.view.aset.OnLoading
 import com.example.gloycash.ui.viewmodel.PenyediaViewModel
+import com.example.gloycash.ui.viewmodel.pendapatan.PendapatanUiState
 import com.example.gloycash.ui.viewmodel.pengeluaran.PengeluaranHomeViewModel
 import com.example.gloycash.ui.viewmodel.pengeluaran.PengeluaranUiState
 
@@ -43,8 +45,14 @@ fun PengeluaranHomeView(
     viewModel: PengeluaranHomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
-
-    val totalPengeluaran = viewModel.totalPengeluaran
+    val uiState = viewModel.uiState
+    val saldoColor = when {
+        uiState is PengeluaranUiState.Success && uiState.totalPendapatan > uiState.totalPengeluaran ->
+            colorResource(id = R.color.green)
+        uiState is PengeluaranUiState.Success && uiState.totalPendapatan < uiState.totalPengeluaran ->
+            Color.Red
+        else -> colorResource(id = R.color.white)
+    }
 
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -53,10 +61,11 @@ fun PengeluaranHomeView(
                 onBack = {},
                 showBackButton = false,
                 showProfile = true,
-                showSaldo = false,
-                showPageTitle = true,
-                Judul = "Pengeluaran: Rp ${totalPengeluaran.toInt()}",
-                saldo = "",
+                showSaldo = true,
+                showPageTitle = false,
+                Judul = "",
+                saldoColor = saldoColor,
+                saldo = "${viewModel.saldo.toInt()}",
                 onRefresh = viewModel::getPengeluaran
             )
         },
