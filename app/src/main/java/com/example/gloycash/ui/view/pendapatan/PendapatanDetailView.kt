@@ -188,7 +188,7 @@ fun ItemDetailPendapatan(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "Pendapatan: ${pendapatan.total}",
+                    text = "Pendapatan: Rp.${pendapatan.total.toInt()}",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = colorResource(id = R.color.black)

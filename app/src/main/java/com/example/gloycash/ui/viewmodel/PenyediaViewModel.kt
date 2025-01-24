@@ -90,7 +90,8 @@ object PenyediaViewModel{
         // Pendapatan
         initializer {
             PendapatanHomeViewModel(
-                GloyCash().container.pendapatanRepository
+                GloyCash().container.pendapatanRepository,
+                GloyCash().container.pengeluaranRepository
             )
         }
         initializer {

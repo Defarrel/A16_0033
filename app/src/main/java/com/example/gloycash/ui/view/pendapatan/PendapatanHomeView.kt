@@ -15,6 +15,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
@@ -26,6 +27,7 @@ import com.example.gloycash.ui.costumwidget.TopAppBar
 import com.example.gloycash.ui.view.aset.OnError
 import com.example.gloycash.ui.view.aset.OnLoading
 import com.example.gloycash.ui.viewmodel.PenyediaViewModel
+import com.example.gloycash.ui.viewmodel.home.HomeUiState
 import com.example.gloycash.ui.viewmodel.pendapatan.PendapatanHomeViewModel
 import com.example.gloycash.ui.viewmodel.pendapatan.PendapatanUiState
 
@@ -43,8 +45,14 @@ fun PendapatanHomeView(
     viewModel: PendapatanHomeViewModel = viewModel(factory = PenyediaViewModel.Factory)
 ) {
     val scrollBehavior = TopAppBarDefaults.enterAlwaysScrollBehavior()
-
-    val totalPendapatan = viewModel.totalPendapatan
+    val uiState = viewModel.uiState
+    val saldoColor = when {
+        uiState is PendapatanUiState.Success && uiState.totalPendapatan > uiState.totalPengeluaran ->
+            colorResource(id = R.color.green)
+        uiState is PendapatanUiState.Success && uiState.totalPendapatan < uiState.totalPengeluaran ->
+            Color.Red
+        else -> colorResource(id = R.color.white)
+    }
 
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -56,7 +64,8 @@ fun PendapatanHomeView(
                 showSaldo = true,
                 showPageTitle = false,
                 Judul = "",
-                saldo = "Rp. ${totalPendapatan.toInt()}",
+                saldo = "${viewModel.saldo.toInt()}",
+                saldoColor = saldoColor,
                 onRefresh = viewModel::getPendapatan
             )
         },
@@ -94,7 +103,6 @@ fun PendapatanHomeView(
         )
     }
 }
-
 
 @Composable
 fun PendapatanStatus(
@@ -141,7 +149,9 @@ fun PendapatanLayout(
         items(pendapatanList) { pendapatan ->
             PendapatanCard(
                 pendapatan = pendapatan,
-                modifier = Modifier.fillMaxWidth().clickable { onDetailClick(pendapatan) },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .clickable { onDetailClick(pendapatan) },
             )
         }
     }
@@ -199,12 +209,17 @@ fun PendapatanCard(
 
                 Column {
                     Text(
-                        text = pendapatan.tanggalTransaksi,
+                        text = "Tanggal Pendapatan:",
                         style = MaterialTheme.typography.titleMedium,
                         color = colorResource(id = R.color.white)
                     )
                     Text(
-                        text = "Total: ${pendapatan.total.toInt()}",
+                        text = "${pendapatan.tanggalTransaksi}",
+                        style = MaterialTheme.typography.titleMedium,
+                        color = colorResource(id = R.color.white)
+                    )
+                    Text(
+                        text = "Pendapatan: Rp.${pendapatan.total.toInt()}",
                         style = MaterialTheme.typography.bodyMedium,
                         color = colorResource(id = R.color.white)
                     )
