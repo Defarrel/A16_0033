@@ -20,7 +20,7 @@ interface PengeluaranService {
         "Accept: application/json",
         "Content-Type: application/json"
     )
-    @POST("store")
+    @POST("pengeluaran/store")
     suspend fun insertPengeluaran(@Body pengeluaran: Pengeluaran)
 
     @GET("pengeluaran")

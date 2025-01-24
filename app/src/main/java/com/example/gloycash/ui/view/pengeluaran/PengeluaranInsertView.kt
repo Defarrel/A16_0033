@@ -79,8 +79,8 @@ fun PengeluaranInsertView(
         modifier = modifier.nestedScroll(scrollBehaviour.nestedScrollConnection),
         topBar = {
             TopAppBar(
-                onBack = navigateBack,
-                showBackButton = true,
+                onBack = {},
+                showBackButton = false,
                 showProfile = true,
                 showSaldo = false,
                 showPageTitle = true,

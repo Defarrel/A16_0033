@@ -55,7 +55,7 @@ fun PengeluaranHomeView(
                 showProfile = true,
                 showSaldo = false,
                 showPageTitle = true,
-                Judul = "Pengeluaran: Rp ${totalPengeluaran}",
+                Judul = "Pengeluaran: Rp ${totalPengeluaran.toInt()}",
                 saldo = "",
                 onRefresh = viewModel::getPengeluaran
             )
@@ -203,7 +203,7 @@ fun PengeluaranCard(
                         color = colorResource(id = R.color.white)
                     )
                     Text(
-                        text = "Total: ${pengeluaran.total}",
+                        text = "Total: ${pengeluaran.total.toInt()}",
                         style = MaterialTheme.typography.bodyMedium,
                         color = colorResource(id = R.color.white)
                     )

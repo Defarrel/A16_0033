@@ -189,7 +189,7 @@ fun ItemDetailPengeluaran(
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Text(
-                    text = "Pengeluaran: ${pengeluaran.total}",
+                    text = "Pengeluaran: ${pengeluaran.total.toInt()}",
                     fontSize = 18.sp,
                     fontWeight = FontWeight.Bold,
                     color = colorResource(id = R.color.black)
