@@ -1,6 +1,7 @@
 package com.example.gloycash.ui.view.home
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -97,7 +98,7 @@ fun HomeContentColumn(
     Column(
         modifier = modifier
             .fillMaxSize()
-            .padding(16.dp)
+            .padding(16.dp),
     ) {
         when (uiState) {
             is HomeUiState.Loading -> {
@@ -108,57 +109,72 @@ fun HomeContentColumn(
                 )
             }
             is HomeUiState.Success -> {
-                Row(
+                Column(
                     modifier = Modifier.fillMaxWidth(),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp)
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    verticalArrangement = Arrangement.spacedBy(16.dp)
                 ) {
                     Card(
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.fillMaxWidth(),
                         colors = CardDefaults.cardColors(
                             containerColor = colorResource(id = R.color.warna2)
                         )
                     ) {
-                        Column(
-                            modifier = Modifier.padding(16.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(95.dp),
+                            contentAlignment = Alignment.Center
                         ) {
-                            Text(
-                                text = "Pendapatan",
-                                style = MaterialTheme.typography.titleMedium,
-                                color = colorResource(id = R.color.white)
-                            )
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Text(
-                                text = "Rp. ${uiState.totalPendapatan.toInt()}",
-                                style = MaterialTheme.typography.headlineSmall,
-                                color = colorResource(id = R.color.white),
-                                fontWeight = FontWeight.Bold
-                            )
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Text(
+                                    text = "Pendapatan",
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = colorResource(id = R.color.white)
+                                )
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Text(
+                                    text = "Rp. ${uiState.totalPendapatan.toInt()}",
+                                    style = MaterialTheme.typography.headlineSmall,
+                                    color = colorResource(id = R.color.white),
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
                         }
                     }
 
                     Card(
-                        modifier = Modifier.weight(1f),
+                        modifier = Modifier.fillMaxWidth(),
                         colors = CardDefaults.cardColors(
                             containerColor = colorResource(id = R.color.warna2)
                         )
                     ) {
-                        Column(
-                            modifier = Modifier.padding(16.dp),
-                            horizontalAlignment = Alignment.CenterHorizontally
+                        Box(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(95.dp),
+                            contentAlignment = Alignment.Center
                         ) {
-                            Text(
-                                text = "Pengeluaran",
-                                style = MaterialTheme.typography.titleMedium,
-                                color = colorResource(id = R.color.white)
-                            )
-                            Spacer(modifier = Modifier.height(8.dp))
-                            Text(
-                                text = "Rp. ${uiState.totalPengeluaran.toInt()}",
-                                style = MaterialTheme.typography.headlineSmall,
-                                color = colorResource(id = R.color.white),
-                                fontWeight = FontWeight.Bold
-                            )
+                            Column(
+                                horizontalAlignment = Alignment.CenterHorizontally,
+                                verticalArrangement = Arrangement.Center
+                            ) {
+                                Text(
+                                    text = "Pengeluaran",
+                                    style = MaterialTheme.typography.titleMedium,
+                                    color = colorResource(id = R.color.white)
+                                )
+                                Spacer(modifier = Modifier.height(8.dp))
+                                Text(
+                                    text = "Rp. ${uiState.totalPengeluaran.toInt()}",
+                                    style = MaterialTheme.typography.headlineSmall,
+                                    color = colorResource(id = R.color.white),
+                                    fontWeight = FontWeight.Bold
+                                )
+                            }
                         }
                     }
                 }
@@ -181,5 +197,6 @@ fun HomeContentColumn(
         }
     }
 }
+
 
 
