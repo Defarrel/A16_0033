@@ -1,25 +1,13 @@
 package com.example.gloycash.ui.costumwidget
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material.icons.filled.Refresh
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
+import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -31,7 +19,6 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.gloycash.R
-
 
 @Composable
 fun TopAppBar(
@@ -47,23 +34,21 @@ fun TopAppBar(
     onRefresh: () -> Unit,
     showRefreshButton: Boolean = true
 ) {
-    Column(
-        modifier = modifier
-            .fillMaxWidth()
-    ) {
+    Column(modifier = modifier.fillMaxWidth().padding(bottom = 16.dp)) {
         Surface(
             color = colorResource(id = R.color.warna1),
             shadowElevation = 8.dp,
             shape = RoundedCornerShape(bottomEnd = 29.dp)
         ) {
             Column {
-                Box(
+                Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 8.dp, horizontal = 16.dp)
+                        .padding(16.dp),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
                     Row(
-                        modifier = Modifier.align(Alignment.CenterStart),
+                        modifier = Modifier.weight(1f),
                         verticalAlignment = Alignment.CenterVertically
                     ) {
                         if (showBackButton) {
@@ -77,30 +62,27 @@ fun TopAppBar(
                         }
 
                         if (showProfile) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                horizontalArrangement = Arrangement.spacedBy(8.dp)
-                            ) {
-                                Image(
-                                    painter = painterResource(id = R.drawable.me),
-                                    contentDescription = null,
-                                    modifier = Modifier
-                                        .size(40.dp)
-                                        .clip(CircleShape)
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Image(
+                                painter = painterResource(id = R.drawable.me),
+                                contentDescription = null,
+                                modifier = Modifier
+                                    .size(40.dp)
+                                    .clip(CircleShape)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Column {
+                                Text(
+                                    text = "Welcome",
+                                    fontSize = 15.sp,
+                                    color = colorResource(id = R.color.white)
                                 )
-                                Column {
-                                    Text(
-                                        text = "Welcome",
-                                        fontSize = 13.sp,
-                                        color = colorResource(id = R.color.white)
-                                    )
-                                    Text(
-                                        text = "Defarrel Danendra Praja",
-                                        fontSize = 15.sp,
-                                        fontWeight = FontWeight.Bold,
-                                        color = colorResource(id = R.color.white)
-                                    )
-                                }
+                                Text(
+                                    text = "Defarrel Danendra Praja",
+                                    fontSize = 18.sp,
+                                    fontWeight = FontWeight.Bold,
+                                    color = colorResource(id = R.color.white)
+                                )
                             }
                         }
                     }
@@ -109,63 +91,60 @@ fun TopAppBar(
                         painter = painterResource(id = R.drawable.gloycash),
                         contentDescription = "Logo",
                         modifier = Modifier
-                            .align(Alignment.CenterEnd)
-                            .size(70.dp)
+                            .size(50.dp)
                             .clip(CircleShape)
                     )
                 }
 
-                if (showPageTitle) {
-                    Text(
-                        text = Judul,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        color = colorResource(id = R.color.white),
-                        modifier = Modifier.padding(start = 16.dp, top = 3.dp, bottom = 16.dp)
-                    )
-                }
-
-                if (showSaldo) {
-                    Column(
-                        modifier = Modifier
-                            .padding(start = 30.dp, bottom = 16.dp)
-                            .fillMaxWidth(),
-                        horizontalAlignment = Alignment.Start
-                    ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 8.dp),
+                    verticalAlignment = Alignment.CenterVertically
+                ) {
+                    if (showPageTitle) {
                         Text(
-                            text = "Saldo Anda Sekarang",
-                            fontSize = 18.sp,
+                            text = Judul,
+                            fontSize = 20.sp,
                             fontWeight = FontWeight.Bold,
-                            color = colorResource(id = R.color.white)
-                        )
-                        Spacer(modifier = Modifier.height(4.dp))
-                        Text(
-                            text = "Rp. $saldo",
-                            fontSize = 18.sp,
-                            fontWeight = FontWeight.Medium,
-                            color = saldoColor
+                            color = colorResource(id = R.color.white),
+                            modifier = Modifier.weight(1f)
                         )
                     }
-                }
-            }
-        }
 
-        if (showRefreshButton) {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .padding(horizontal = 16.dp),
-                contentAlignment = Alignment.CenterEnd
-            ) {
-                IconButton(onClick = onRefresh) {
-                    Icon(
-                        imageVector = Icons.Filled.Refresh,
-                        contentDescription = "Refresh",
-                        tint = colorResource(id = R.color.warna1)
-                    )
+                    if (showSaldo) {
+                        Column(
+                            horizontalAlignment = Alignment.Start,
+                            modifier = Modifier
+                                .padding(start = 16.dp)
+                        ) {
+                            Text(
+                                text = "Saldo Anda",
+                                fontSize = 18.sp,
+                                fontWeight = FontWeight.Bold,
+                                color = colorResource(id = R.color.white)
+                            )
+                            Spacer(modifier = Modifier.height(4.dp))
+                            Text(
+                                text = "Rp. $saldo",
+                                fontSize = 20.sp,
+                                fontWeight = FontWeight.Medium,
+                                color = saldoColor
+                            )
+                        }
+                    }
+
+                    if (showRefreshButton) {
+                        IconButton(onClick = onRefresh) {
+                            Icon(
+                                imageVector = Icons.Filled.Refresh,
+                                contentDescription = "Refresh",
+                                tint = colorResource(id = R.color.white)
+                            )
+                        }
+                    }
                 }
             }
         }
     }
 }
-
