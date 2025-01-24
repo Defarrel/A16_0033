@@ -209,12 +209,7 @@ fun PendapatanCard(
 
                 Column {
                     Text(
-                        text = "Tanggal Pendapatan:",
-                        style = MaterialTheme.typography.titleMedium,
-                        color = colorResource(id = R.color.white)
-                    )
-                    Text(
-                        text = "${pendapatan.tanggalTransaksi}",
+                        text = pendapatan.catatan,
                         style = MaterialTheme.typography.titleMedium,
                         color = colorResource(id = R.color.white)
                     )

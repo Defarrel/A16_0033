@@ -198,12 +198,12 @@ fun PengeluaranCard(
 
                 Column {
                     Text(
-                        text = pengeluaran.tanggalTransaksi,
+                        text = pengeluaran.catatan,
                         style = MaterialTheme.typography.titleMedium,
                         color = colorResource(id = R.color.white)
                     )
                     Text(
-                        text = "Total: ${pengeluaran.total.toInt()}",
+                        text = "Pengeluaran: Rp.${pengeluaran.total.toInt()}",
                         style = MaterialTheme.typography.bodyMedium,
                         color = colorResource(id = R.color.white)
                     )
