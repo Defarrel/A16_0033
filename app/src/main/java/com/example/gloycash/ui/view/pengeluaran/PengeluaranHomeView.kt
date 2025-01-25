@@ -12,6 +12,10 @@ import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.outlined.Info
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.shadow
@@ -53,6 +57,7 @@ fun PengeluaranHomeView(
             Color.Red
         else -> colorResource(id = R.color.white)
     }
+    var insertConfirmationRequired by rememberSaveable { mutableStateOf(false) }
 
     Scaffold(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -82,7 +87,13 @@ fun PengeluaranHomeView(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = navigateToInsert,
+                onClick = {
+                    if (viewModel.saldo < 0) {
+                        insertConfirmationRequired = true
+                    } else {
+                        navigateToInsert()
+                    }
+                },
                 containerColor = colorResource(id = R.color.warna3),
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
@@ -100,6 +111,15 @@ fun PengeluaranHomeView(
             retryAction = { viewModel.getPengeluaran() },
             modifier = Modifier.padding(innerPadding),
             onDetailClick = onDetailClick
+        )
+    }
+    if (insertConfirmationRequired) {
+        ConfirmationInsert(
+            onInsertConfirm = {
+                insertConfirmationRequired = false
+                navigateToInsert()
+            },
+            onInsertCancel = { insertConfirmationRequired = false }
         )
     }
 }
@@ -220,4 +240,29 @@ fun PengeluaranCard(
             }
         }
     }
+}
+
+@Composable
+private fun ConfirmationInsert(
+    onInsertConfirm: () -> Unit,
+    onInsertCancel: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    AlertDialog(
+        onDismissRequest = {/* Do Nothing */},
+        title = { Text("Insert Data") },
+        text = { Text("”Keuangan anda sudah minus, apakah anda yakin menambah data\n" +
+                "pengeluaran?") },
+        modifier = modifier,
+        dismissButton = {
+            TextButton(onClick = onInsertCancel) {
+                Text("Cancel")
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onInsertConfirm) {
+                Text("Yes")
+            }
+        }
+    )
 }
