@@ -12,6 +12,7 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
@@ -23,11 +24,16 @@ import androidx.compose.material3.OutlinedTextFieldDefaults
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.SnackbarHost
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextButton
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -84,7 +90,7 @@ fun PengeluaranInsertView(
                 showProfile = true,
                 showSaldo = false,
                 showPageTitle = true,
-                Judul = "Sudah Kah Anda Menabung?",
+                Judul = "Sudahkah Anda Menabung?",
                 saldo = "",
                 showRefreshButton = false,
                 onRefresh = {},
@@ -127,6 +133,7 @@ fun EntryBody(
     onViewAllClick: () -> Unit,
     modifier: Modifier = Modifier
 ) {
+    var insertConfirmationRequired by rememberSaveable { mutableStateOf(false) }
     Column(
         verticalArrangement = Arrangement.spacedBy(18.dp),
         modifier = modifier
@@ -208,6 +215,14 @@ fun EntryBody(
                 }
             }
         }
+    }
+    if (insertConfirmationRequired) {
+        ConfirmationInsert(
+            onInsertConfirm = {
+                insertConfirmationRequired = false
+            },
+            onInsertCancel = { insertConfirmationRequired = false }
+        )
     }
 }
 
@@ -317,4 +332,29 @@ fun FormInput(
             color = Color.Red,
         )
     }
+}
+
+@Composable
+private fun ConfirmationInsert(
+    onInsertConfirm: () -> Unit,
+    onInsertCancel: () -> Unit,
+    modifier: Modifier = Modifier
+) {
+    AlertDialog(
+        onDismissRequest = {/* Do Nothing */},
+        title = { Text("Insert Data") },
+        text = { Text("”Keuangan anda sudah minus, apakah anda yakin menambah data\n" +
+                "pengeluaran?") },
+        modifier = modifier,
+        dismissButton = {
+            TextButton(onClick = onInsertCancel) {
+                Text("Cancel")
+            }
+        },
+        confirmButton = {
+            TextButton(onClick = onInsertConfirm) {
+                Text("Yes")
+            }
+        }
+    )
 }

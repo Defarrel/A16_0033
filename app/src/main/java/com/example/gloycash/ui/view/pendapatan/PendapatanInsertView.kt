@@ -58,7 +58,7 @@ fun PendapatanInsertView(
                 showProfile = true,
                 showSaldo = false,
                 showPageTitle = true,
-                Judul = "Sudah Kah Anda Menabung?",
+                Judul = "Sudahkah Anda Menabung?",
                 saldo = "",
                 showRefreshButton = false,
                 onRefresh = {},

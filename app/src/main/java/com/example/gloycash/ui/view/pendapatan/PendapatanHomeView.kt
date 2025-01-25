@@ -150,8 +150,8 @@ fun PendapatanLayout(
             PendapatanCard(
                 pendapatan = pendapatan,
                 modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { onDetailClick(pendapatan) },
+                    .fillMaxWidth(),
+                onDetailClick = { onDetailClick(pendapatan) },
             )
         }
     }
@@ -161,6 +161,7 @@ fun PendapatanLayout(
 fun PendapatanCard(
     pendapatan: Pendapatan,
     modifier: Modifier = Modifier,
+    onDetailClick: (Pendapatan) -> Unit
 ) {
 
     Card(
@@ -197,12 +198,16 @@ fun PendapatanCard(
                         ),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Info,
-                        contentDescription = null,
-                        tint = colorResource(id = R.color.white),
-                        modifier = Modifier.size(24.dp)
-                    )
+                    IconButton(
+                        onClick = { onDetailClick(pendapatan) }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Info,
+                            contentDescription = null,
+                            tint = colorResource(id = R.color.white),
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
                 }
 
                 Spacer(modifier = Modifier.width(10.dp))

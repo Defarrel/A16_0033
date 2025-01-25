@@ -170,7 +170,8 @@ fun PengeluaranLayout(
         items(pengeluaranList) { pengeluaran ->
             PengeluaranCard(
                 pengeluaran = pengeluaran,
-                modifier = Modifier.fillMaxWidth().clickable { onDetailClick(pengeluaran) },
+                modifier = Modifier.fillMaxWidth(),
+                onDetailClick = { onDetailClick(pengeluaran) },
             )
         }
     }
@@ -180,6 +181,7 @@ fun PengeluaranLayout(
 fun PengeluaranCard(
     pengeluaran: Pengeluaran,
     modifier: Modifier = Modifier,
+    onDetailClick: (Pengeluaran) -> Unit
 ) {
     Card(
         modifier = modifier
@@ -215,12 +217,16 @@ fun PengeluaranCard(
                         ),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Info,
-                        contentDescription = null,
-                        tint = colorResource(id = R.color.white),
-                        modifier = Modifier.size(24.dp)
-                    )
+                    IconButton(
+                        onClick = { onDetailClick(pengeluaran) }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Info,
+                            contentDescription = null,
+                            tint = colorResource(id = R.color.white),
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
                 }
 
                 Spacer(modifier = Modifier.width(10.dp))

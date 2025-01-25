@@ -26,6 +26,7 @@ import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -158,7 +159,8 @@ fun KategoriLayout(
         items(kategoriList) { kategori ->
             KategoriCard(
                 kategori = kategori,
-                modifier = Modifier.fillMaxWidth().clickable { onDetailClick(kategori) },
+                modifier = Modifier.fillMaxWidth(),
+                onDetailClick = {onDetailClick(kategori)}
             )
         }
     }
@@ -168,6 +170,7 @@ fun KategoriLayout(
 fun KategoriCard(
     kategori: Kategori,
     modifier: Modifier = Modifier,
+    onDetailClick: (Kategori) -> Unit = {},
 ) {
 
     Card(
@@ -204,19 +207,23 @@ fun KategoriCard(
                         ),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Info,
-                        contentDescription = null,
-                        tint = colorResource(id = R.color.white),
-                        modifier = Modifier.size(24.dp)
-                    )
+                    IconButton(
+                        onClick = { onDetailClick(kategori) }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Info,
+                            contentDescription = null,
+                            tint = colorResource(id = R.color.white),
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
                 }
 
                 Spacer(modifier = Modifier.width(10.dp))
 
                 Column {
                     Text(
-                        text = kategori.namaKategori,  // ganti namaAset menjadi namaKategori
+                        text = kategori.namaKategori,
                         style = MaterialTheme.typography.titleMedium,
                         color = colorResource(id = R.color.white)
                     )

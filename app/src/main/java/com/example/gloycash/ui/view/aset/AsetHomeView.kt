@@ -194,7 +194,8 @@ fun AsetLayout(
         items(asetList) { aset ->
             AsetCard(
                 aset = aset,
-                modifier = Modifier.fillMaxWidth().clickable { onDetailClick(aset) },
+                modifier = Modifier.fillMaxWidth(),
+                onDetailClick = { onDetailClick(aset) },
             )
         }
     }
@@ -204,8 +205,8 @@ fun AsetLayout(
 fun AsetCard(
     aset: Aset,
     modifier: Modifier = Modifier,
+    onDetailClick: (Aset) -> Unit
 ) {
-
     Card(
         modifier = modifier
             .fillMaxWidth()
@@ -230,7 +231,6 @@ fun AsetCard(
             Row(
                 verticalAlignment = Alignment.CenterVertically
             ) {
-
                 Box(
                     modifier = Modifier
                         .size(55.dp)
@@ -240,12 +240,16 @@ fun AsetCard(
                         ),
                     contentAlignment = Alignment.Center
                 ) {
-                    Icon(
-                        imageVector = Icons.Outlined.Info,
-                        contentDescription = null,
-                        tint = colorResource(id = R.color.white),
-                        modifier = Modifier.size(24.dp)
-                    )
+                    IconButton(
+                        onClick = { onDetailClick(aset) }
+                    ) {
+                        Icon(
+                            imageVector = Icons.Outlined.Info,
+                            contentDescription = null,
+                            tint = colorResource(id = R.color.white),
+                            modifier = Modifier.size(24.dp)
+                        )
+                    }
                 }
 
                 Spacer(modifier = Modifier.width(10.dp))
@@ -261,5 +265,6 @@ fun AsetCard(
         }
     }
 }
+
 
 
