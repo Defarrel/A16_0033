@@ -175,7 +175,7 @@ fun PendapatanCard(
             ),
         shape = RoundedCornerShape(16.dp),
         colors = CardDefaults.cardColors(
-            containerColor = colorResource(id = R.color.warna2),
+            containerColor = colorResource(id = R.color.greenn),
         )
     ) {
         Row(
