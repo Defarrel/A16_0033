@@ -111,6 +111,8 @@ object PenyediaViewModel{
             PendapatanUpdateViewModel(
                 createSavedStateHandle(),
                 GloyCash().container.pendapatanRepository,
+                GloyCash().container.kategoriRepository,
+                GloyCash().container.asetRepository
             )
         }
 
