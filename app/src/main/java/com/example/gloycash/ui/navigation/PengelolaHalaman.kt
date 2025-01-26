@@ -191,8 +191,8 @@ fun PengelolaHalaman(
             id?.let {
                 PengeluaranUpdateView(
                     navigateBack = {
-                        navController.navigate("${DestinasiHomePengeluaran.route}") {
-                            popUpTo(DestinasiHomePengeluaran.route) {
+                        navController.navigate("${DestinasiDetailPengeluaran.route}/$it") {
+                            popUpTo("${DestinasiDetailPengeluaran.route}/$it") {
                                 inclusive = true
                             }
                         }
