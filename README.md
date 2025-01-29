@@ -1,4 +1,3 @@
-![DetailKategori](https://github.com/user-attachments/assets/356901c8-e818-40ea-ada3-a05c0ec5d65a)
 1. Keuangan
 ![HomeKeuangan](https://github.com/user-attachments/assets/f6164f66-a95f-411f-8079-f6146162b8a7)
 ![SaldoMines](https://github.com/user-attachments/assets/c83a7731-96ca-4ebb-a426-1a7613bfb0ee)
